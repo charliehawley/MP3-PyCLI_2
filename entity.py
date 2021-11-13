@@ -22,3 +22,4 @@ def hero_init():
                 print("That's an unusual name, would you mind anglicizing it...")
         except IndexError as e:
             print('You must have a name?')
+
