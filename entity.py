@@ -50,4 +50,4 @@ def ents_init(enemy_ent, loot_ent):
 
     stairs = Ent('/stairs', 0, 0, stairs1_position)
 
-    return vars(enemy_ent), vars(loot_ent), vars(stairs)
+    return enemy_ent, loot_ent, stairs
