@@ -13,10 +13,10 @@ l2 = [ent_dict['bruiser'], ent_dict[ent_names[randint(3, 5)]]]
 l3 = [ent_dict['boss'], ent_dict[ent_names[randint(3, 5)]]]
 
 enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
-print(hero.position)
-print(enemy.position)
-print(loot.position)
-print(stairs.position)
+# print(hero.position)
+# print(enemy.position)
+# print(loot.position)
+# print(stairs.position)
 
 map_limit = level.largest_index_position(hero.position, enemy.position, loot.position, stairs.position)
 print(map_limit)
@@ -27,5 +27,6 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 other_ents_pos = [enemy.position, loot.position, stairs.position]
 
 move = input('Where would you like to go...?\n')
-level_map = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos)
+check_pos = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+print(check_pos)
 # level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
