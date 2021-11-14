@@ -32,38 +32,42 @@ class level_map_gen:
 
     def move_hero(self, hero_lst, dir, lst_lst, ents_pos, map_limit):
         if dir == 'w':
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
-            if (hero_lst_[3][0] - 1 == < 0):
+            if (hero_lst[3][0] - 1) < 0:
                 pass
-            hero_lst[3][0] -= 1
-            check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-            # os.system('cls' if os.name == 'nt' else 'clear')
-            return check_pos
+            else:
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
+                hero_lst[3][0] -= 1
+                check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
+                # os.system('cls' if os.name == 'nt' else 'clear')
+                return check_pos
         elif dir == 's':
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
-            if (hero_lst_[3][0] + 1 == > map_limit):
+            if (hero_lst[3][0] + 1) > map_limit:
                 pass
-            hero_lst[3][0] += 1
-            check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-            # os.system('cls' if os.name == 'nt' else 'clear')
-            return check_pos
+            else:
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
+                hero_lst[3][0] += 1
+                check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
+                # os.system('cls' if os.name == 'nt' else 'clear')
+                return check_pos
         elif dir == 'a':
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
-            if (hero_lst_[3][1] - 1 == < 0):
+            if (hero_lst[3][1] - 1) < 0:
                 pass
-            hero_lst[3][1] -= 1
-            check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-            # os.system('cls' if os.name == 'nt' else 'clear')
-            return check_pos
+            else:
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
+                hero_lst[3][1] -= 1
+                check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
+                # os.system('cls' if os.name == 'nt' else 'clear')
+                return check_pos
         elif dir == 'd':
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
-            if (hero_lst_[3][1] + 1 == > map_limit):
+            if (hero_lst[3][1] + 1) > map_limit:
                 pass
-            hero_lst[3][1] += 1
-            check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
-            lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-            # os.system('cls' if os.name == 'nt' else 'clear')
-            return check_pos
+            else:
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = '-'
+                hero_lst[3][1] += 1
+                check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
+                lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
+                # os.system('cls' if os.name == 'nt' else 'clear')
+                return check_pos
