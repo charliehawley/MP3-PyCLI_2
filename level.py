@@ -39,8 +39,8 @@ class level_map_gen:
                 hero_lst[3][0] -= 1
                 check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
                 lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-                # os.system('cls' if os.name == 'nt' else 'clear')
-                return check_pos
+                os.system('cls' if os.name == 'nt' else 'clear')
+                return [check_pos, hero_lst[3]]
         elif dir == 's':
             if (hero_lst[3][0] + 1) > map_limit:
                 pass
@@ -49,8 +49,8 @@ class level_map_gen:
                 hero_lst[3][0] += 1
                 check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
                 lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-                # os.system('cls' if os.name == 'nt' else 'clear')
-                return check_pos
+                os.system('cls' if os.name == 'nt' else 'clear')
+                return [check_pos, hero_lst[3]]
         elif dir == 'a':
             if (hero_lst[3][1] - 1) < 0:
                 pass
@@ -59,8 +59,8 @@ class level_map_gen:
                 hero_lst[3][1] -= 1
                 check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
                 lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-                # os.system('cls' if os.name == 'nt' else 'clear')
-                return check_pos
+                os.system('cls' if os.name == 'nt' else 'clear')
+                return [check_pos, hero_lst[3]]
         elif dir == 'd':
             if (hero_lst[3][1] + 1) > map_limit:
                 pass
@@ -69,5 +69,5 @@ class level_map_gen:
                 hero_lst[3][1] += 1
                 check_pos = check_hero_pos(lst_lst, hero_lst[3], ents_pos[0], ents_pos[1], ents_pos[2])
                 lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
-                # os.system('cls' if os.name == 'nt' else 'clear')
-                return check_pos
+                os.system('cls' if os.name == 'nt' else 'clear')
+                return [check_pos, hero_lst[3]]
