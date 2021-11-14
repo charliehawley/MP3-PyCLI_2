@@ -21,4 +21,11 @@ print(stairs.position)
 map_limit = level.largest_index_position(hero.position, enemy.position, loot.position, stairs.position)
 print(map_limit)
 level_map = level.level_map_gen(map_limit)
-level_map.print_map(level_map.map, hero.hp, hero.power, hero.position, enemy.position, loot.position, stairs.position, hero.name)
+hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
+level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+
+other_ents_pos = [enemy.position, loot.position, stairs.position]
+
+move = input('Where would you like to go...?\n')
+level_map = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos)
+# level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
