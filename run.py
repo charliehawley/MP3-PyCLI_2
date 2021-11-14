@@ -7,7 +7,7 @@ hero = entity.hero_init()
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ent_dict = {'runt': ['runt', 10, 2], 'bruiser': ['bruiser', 4, 3], 'boss': ['boss', 10, 4], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', 0, 2], 'vigour': ['vigour', 0, 5]}
+ent_dict = {'runt': ['runt', 5, 2], 'bruiser': ['bruiser', 10, 2], 'boss': ['boss', 20, 3], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', 0, 2], 'vigour': ['vigour', 0, 3]}
 
 ent_names = list(ent_dict.keys())
 
@@ -27,14 +27,12 @@ level_map = level.level_map_gen(map_limit)
 hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
 
-other_ents_pos = [enemy.position, loot.position, stairs.position]
-
 move = input('Where would you like to go...?\n')
-check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
 # if check_pos == None:
 #     print('Use w, a, s, d to move...')
 #     move = input('Where would you like to go...?\n')
-#     check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+#     check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
 print(check_pos, hero_index)
 
 hero_map_att[3] = hero_index
@@ -60,23 +58,26 @@ def battle():
 while True:
     if check_pos == 'walk':
         move = input('Where would you like to go...?\n')
-        check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+        check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
         hero_map_att[3] = hero_index
         level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
         continue
     elif check_pos == 'loot':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon
         print(f'You picked up {loot.name[1:]}!')
-        if loot.name == 'lunch':
-            hero.hp += lunch.power
+        if loot.name[1:] == 'lunch':
+            hero.hp += loot.power
+            hero_map_att[0] += loot.power
             print("It's delicious...")
-            print(f'You gained {lunch.power} hp.')
-        elif loot.name == 'stimulant':
-            hero.power *= stimulant.power
+            print(f'You gained {loot.power} hp.')
+        elif loot.name[1:] == 'stimulant':
+            hero.power *= loot.power
+            hero_map_att[1] *= loot.power
             print('You feel way juiced, man!')
             print('Your bloodied fists twitch, itching to get to work.')
         else:
             hero.power += loot.power
+            hero_map_att[1] += loot.power
             print("Is that ginger and chilli?")
             print('WOW that packs a punch!')
         check_pos = 'walk'
