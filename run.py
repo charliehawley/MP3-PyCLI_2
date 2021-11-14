@@ -1,8 +1,11 @@
+import os
 import entity
 import level
 from random import randint
 
 hero = entity.hero_init()
+
+os.system('cls' if os.name == 'nt' else 'clear')
 
 ent_dict = {'runt': ['runt', 10, 2], 'bruiser': ['bruiser', 4, 3], 'boss': ['boss', 10, 4], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', 0, 2], 'vigour': ['vigour', 0, 5]}
 
@@ -27,10 +30,14 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 other_ents_pos = [enemy.position, loot.position, stairs.position]
 
 move = input('Where would you like to go...?\n')
-check_pos = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
-print(check_pos)
+check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+# if check_pos == None:
+#     print('Use w, a, s, d to move...')
+#     move = input('Where would you like to go...?\n')
+#     check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+print(check_pos, hero_index)
 
-hero_map_att[3] = check_pos[1]
+hero_map_att[3] = hero_index
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
 
 def battle():
@@ -51,13 +58,14 @@ def battle():
                 pass
 
 while True:
-    if check_pos[0] == 'walk':
+    if check_pos == 'walk':
         move = input('Where would you like to go...?\n')
-        check_pos = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
-        hero_map_att[3] = check_pos[1]
+        check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, other_ents_pos, map_limit)
+        hero_map_att[3] = hero_index
         level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
         continue
-    elif check_pos[0] == 'loot':
+    elif check_pos == 'loot':
+        level_map.map[hero_index[0]][hero_index[1]] = hero.icon
         print(f'You picked up {loot.name[1:]}!')
         if loot.name == 'lunch':
             hero.hp += lunch.power
@@ -71,12 +79,12 @@ while True:
             hero.power += loot.power
             print("Is that ginger and chilli?")
             print('WOW that packs a punch!')
-        check_pos[0] = 'walk'
+        check_pos = 'walk'
         continue
-    elif check_pos[0] == 'fight':
+    elif check_pos == 'fight':
         battle()
-        check_pos[0] = 'walk'
-    else:
+        check_pos = 'walk'
+    elif check_pos == 'stairs':
         print('Going up?')
         break
 

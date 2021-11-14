@@ -71,3 +71,5 @@ class level_map_gen:
                 lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
                 os.system('cls' if os.name == 'nt' else 'clear')
                 return [check_pos, hero_lst[3]]
+        else:
+            pass
