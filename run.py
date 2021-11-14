@@ -3,11 +3,77 @@ import entity
 import level
 from random import randint
 
+gone_rogue_logo = """  
+▄████  ▒█████   ███▄    █ ▓█████     ██▀███   ▒█████    ▄████  █    ██ ▓█████ 
+ ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀ 
+▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███   
+░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄ 
+░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
+ ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
+  ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
+░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░   
+      ░     ░ ░           ░    ░  ░      ░         ░ ░        ░    ░        ░  ░"""
+
+def menu():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(gone_rogue_logo)
+    print("Welcome to Gone Rogue")
+    while True:
+        menu_choice = input('\ni = intro, c = controls, s = start\n')
+        if menu_choice == 'i':
+            print ("\033[A                             \033[A\n")
+            print("At the dawn of the 1980s, rudimentary programming made a small step \ninto the world of procedural generation in gaming. \nTwo men Michael Toy and Glenn Wichman\n    PRESS ENTER")
+            input()
+            print ("\033[A                             \033[A")
+            print ("\033[A                             \033[A")
+            print("They disappeared...\n    PRESS ENTER")
+            input()
+            print ("\033[A                             \033[A")
+            print ("\033[A                             \033[A")
+            print("Years later, the world realised...\n    PRESS ENTER")
+            input()
+            print ("\033[A                             \033[A")
+            print ("\033[A                             \033[A")
+            print("...they'd GONE ROGUE'\n    PRESS ENTER")
+            input()
+        elif menu_choice == 'c':
+            print ("\033[A                             \033[A")
+            print ("\033[A                             \033[A")
+            print ("\033[A                                      \033[A")
+            print("""
+The world of Gone Rogue is unique every time you play.
+Once you enter the game, randomness dictates your experience.
+Many parameters of the game like map size, 
+loot attributes, and spawn positions are randomised.
+
+To navigate through the world you must input a direction and press enter.
+
+w = ^
+a = <
+s = v
+d = >
+
+You'll want to grab any loot available (?) before beginning encounters.
+Loot has randomised effects. You could find a nutritious lunch,
+or end up making sacrifices for your blood sport.
+
+Enemy (#) encounters are triggered by walking over them.
+Once you step into an encounter there's no going back, 
+in the world of Gone Rogue, it's always a fight to the death.""")
+            input('     PRESS ENTER')
+            
+        elif menu_choice == 's':
+            print('It begins...')
+            break
+        else:
+            menu()
+menu()
+
 hero = entity.hero_init()
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ent_dict = {'runt': ['runt', 5, 2], 'bruiser': ['bruiser', 10, 2], 'boss': ['boss', 20, 3], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', 0, 2], 'vigour': ['vigour', 0, 3]}
+ent_dict = {'runt': ['runt', 5, 2], 'bruiser': ['bruiser', 10, 2], 'boss': ['boss', 20, 3], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
 
 ent_names = list(ent_dict.keys())
 
@@ -61,6 +127,7 @@ while True:
         continue
     elif check_pos == 'loot':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon
+        loot.position = stairs.position
         print(f'You picked up {loot.name}!')
         if loot.name == 'lunch':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
@@ -72,7 +139,9 @@ while True:
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
             hero.power *= loot.power
             hero_map_att[1] *= loot.power
-            print('You feel way juiced, man!')
+            hero.hp += loot.hp
+            hero_map_att[0] += loot.hp
+            print('You feel way juiced, man! So juiced it hurts.')
             print('Your bloodied fists twitch, itching to get to work.')
         else:
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
@@ -84,6 +153,7 @@ while True:
         continue
     elif check_pos == 'fight':
         battle()
+        enemy.position = stairs.position
         check_pos = 'walk'
     elif check_pos == 'stairs':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
