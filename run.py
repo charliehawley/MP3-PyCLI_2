@@ -164,7 +164,7 @@ def play_level(check_pos):
             check_pos = 'walk'
         elif check_pos == 'stairs':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
-            print('Going up?')
+            print('\nGoing down?\n')
             break
         elif check_pos == 'oob':
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -184,10 +184,12 @@ def play_level(check_pos):
             level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 
 play_level(check_pos)
-
+input('Go deeper...')
 
 ##################Level 2##################
 
+hero.position = [(randint(0, 10)), (randint(0, 10))]
+hero_map_att[3] = hero.position
 enemy, loot, stairs = entity.ents_init(l2[0], l2[1])
 
 map_limit = level.largest_index_position(hero.position, enemy.position, loot.position, stairs.position)
