@@ -13,7 +13,7 @@ hero_position = [(randint(0, 10)), (randint(0, 10))]
 def hero_init():
     while True:
         try: 
-            h_name = input('What is your name hero?\n')
+            h_name = input('\nWhat is your name hero?\n')
             if h_name[0].isalpha():
                 hero = Ent(h_name, 15, 3, hero_position)
                 return hero

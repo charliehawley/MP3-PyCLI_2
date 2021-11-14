@@ -20,7 +20,10 @@ class level_map_gen:
     def __init__(self, int):
         self.map = [['-' for x in range(0, int + 1)] for x in range(0, int + 1)]
     
-    def print_map(self, lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos):
+    def print_map(self, lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos, gone_rogue_logo):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(gone_rogue_logo)
+        print("Welcome to Gone Rogue\n")
         lst_lst[enemy_pos[0]][enemy_pos[1]] = '#'
         lst_lst[loot_pos[0]][loot_pos[1]] = '?'
         lst_lst[stairs_pos[0]][stairs_pos[1]] = '/'

@@ -21,6 +21,8 @@ def menu():
     while True:
         menu_choice = input('\ni = intro, c = controls, s = start\n')
         if menu_choice == 'i':
+            print ("\033[A                             \033[A")
+            print ("\033[A                             \033[A")
             print ("\033[A                             \033[A\n")
             print("At the dawn of the 1980s, rudimentary programming made a small step \ninto the world of procedural generation in gaming. \nTwo men Michael Toy and Glenn Wichman\n    PRESS ENTER")
             input()
@@ -36,6 +38,9 @@ def menu():
             print ("\033[A                             \033[A")
             print("...they'd GONE ROGUE'\n    PRESS ENTER")
             input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(gone_rogue_logo)
+            print("Welcome to Gone Rogue")
         elif menu_choice == 'c':
             print ("\033[A                             \033[A")
             print ("\033[A                             \033[A")
@@ -61,9 +66,15 @@ Enemy (#) encounters are triggered by walking over them.
 Once you step into an encounter there's no going back, 
 in the world of Gone Rogue, it's always a fight to the death.""")
             input('     PRESS ENTER')
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(gone_rogue_logo)
+            print("Welcome to Gone Rogue")
             
         elif menu_choice == 's':
             print('It begins...')
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(gone_rogue_logo)
+            print("Welcome to Gone Rogue")
             break
         else:
             menu()
@@ -71,7 +82,8 @@ menu()
 
 hero = entity.hero_init()
 
-os.system('cls' if os.name == 'nt' else 'clear')
+print ("\033[A                             \033[A")
+print ("\033[A                             \033[A")
 
 ent_dict = {'runt': ['runt', 5, 2], 'bruiser': ['bruiser', 10, 2], 'boss': ['boss', 20, 3], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
 
@@ -91,7 +103,7 @@ map_limit = level.largest_index_position(hero.position, enemy.position, loot.pos
 # print(map_limit)
 level_map = level.level_map_gen(map_limit)
 hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
-level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 check_pos = 'walk'
 
 move = input('Where would you like to go...?\n')
@@ -99,7 +111,7 @@ check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, m
 # print(check_pos, hero_index)
 
 hero_map_att[3] = hero_index
-level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 
 def battle():
         enemy.hp -= hero.power
@@ -123,7 +135,7 @@ while True:
         move = input('Where would you like to go...?\n')
         check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
         hero_map_att[3] = hero_index
-        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
         continue
     elif check_pos == 'loot':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon
@@ -161,20 +173,20 @@ while True:
         break
     elif check_pos == 'oob':
         os.system('cls' if os.name == 'nt' else 'clear')
-        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
         print("You walk into a wall.\n")
         move = input('Where would you like to go...?\n')
         check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
         hero_map_att[3] = hero_index
-        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
-        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
         print('\nUse\nw - up\na - left\ns - down\nd -right\nto move...\n')
         move = input('Where would you like to go...?\n')
         check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
         hero_map_att[3] = hero_index
-        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 
 
 
@@ -183,4 +195,4 @@ while True:
 
 
 
-# level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+# level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
