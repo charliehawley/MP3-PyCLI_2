@@ -24,30 +24,30 @@ def hero_init():
             print('But you must have a name?')
 
 def ents_init(enemy_ent, loot_ent):
-    enemy1_position = [(randint(0, 10)), (randint(0, 10))]
+    enemy_position = [(randint(0, 10)), (randint(0, 10))]
 
     a = hero_position
-    b = enemy1_position
+    b = enemy_position
 
     while a == b:
-        enemy1_position = [(randint(0, 10)), (randint(0, 10))]
+        enemy_position = [(randint(0, 10)), (randint(0, 10))]
 
-    enemy_ent = Ent('#' + enemy_ent[0], enemy_ent[1], enemy_ent[2], enemy1_position)
+    enemy_ent = Ent(enemy_ent[0], enemy_ent[1], enemy_ent[2], enemy_position)
 
-    loot1_position = [(randint(0, 10)), (randint(0, 10))]
-    c = loot1_position
+    loot_position = [(randint(0, 10)), (randint(0, 10))]
+    c = loot_position
 
     while c == a or c == b:
-        loot1_position = [(randint(0, 10)), (randint(0, 10))]
+        loot_position = [(randint(0, 10)), (randint(0, 10))]
 
-    loot_ent = Ent('?' + loot_ent[0], loot_ent[1], loot_ent[2], loot1_position)
+    loot_ent = Ent(loot_ent[0], loot_ent[1], loot_ent[2], loot_position)
 
-    stairs1_position = [(randint(0, 10)), (randint(0, 10))]
-    d = stairs1_position
+    stairs_position = [(randint(0, 10)), (randint(0, 10))]
+    d = stairs_position
 
     while d == a or d == b or d == c:
-        stairs1_position = [(randint(0, 10)), (randint(0, 10))]
+        stairs_position = [(randint(0, 10)), (randint(0, 10))]
 
-    stairs = Ent('/stairs', 0, 0, stairs1_position)
+    stairs = Ent('stairs', 0, 0, stairs_position)
 
     return enemy_ent, loot_ent, stairs

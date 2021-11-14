@@ -22,7 +22,7 @@ enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
 # print(stairs.position)
 
 map_limit = level.largest_index_position(hero.position, enemy.position, loot.position, stairs.position)
-print(map_limit)
+# print(map_limit)
 level_map = level.level_map_gen(map_limit)
 hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
@@ -30,7 +30,7 @@ check_pos = 'walk'
 
 move = input('Where would you like to go...?\n')
 check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
-print(check_pos, hero_index)
+# print(check_pos, hero_index)
 
 hero_map_att[3] = hero_index
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
@@ -50,7 +50,7 @@ def battle():
             elif hero.hp > 0 and enemy.hp < 0:
                 print(f'You defeated {enemy.name}!')
             else:
-                pass
+                battle()
 
 while True:
     if check_pos == 'walk':
@@ -61,14 +61,14 @@ while True:
         continue
     elif check_pos == 'loot':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon
-        print(f'You picked up {loot.name[1:]}!')
-        if loot.name[1:] == 'lunch':
+        print(f'You picked up {loot.name}!')
+        if loot.name == 'lunch':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
             hero.hp += loot.power
             hero_map_att[0] += loot.power
             print("It's delicious...")
             print(f'You gained {loot.power} hp.')
-        elif loot.name[1:] == 'stimulant':
+        elif loot.name == 'stimulant':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
             hero.power *= loot.power
             hero_map_att[1] *= loot.power
@@ -84,11 +84,19 @@ while True:
         continue
     elif check_pos == 'fight':
         battle()
-        level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
         check_pos = 'walk'
     elif check_pos == 'stairs':
         level_map.map[hero_index[0]][hero_index[1]] = hero.icon 
         print('Going up?')
+        break
+    elif check_pos == 'oob':
+        os.system('cls' if os.name == 'nt' else 'clear')
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
+        print("You walk into a wall.\n")
+        move = input('Where would you like to go...?\n')
+        check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
+        hero_map_att[3] = hero_index
+        level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
         level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position)
