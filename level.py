@@ -72,4 +72,4 @@ class level_map_gen:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 return [check_pos, hero_lst[3]]
         else:
-            pass
+            return [None, hero_lst[3]]
