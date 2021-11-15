@@ -65,7 +65,7 @@ or end up making sacrifices for your blood sport.
 Enemy (#) encounters are triggered by walking over them.
 Once you step into an encounter there's no going back, 
 in the world of Gone Rogue, it's always a fight to the death.""")
-            input('     PRESS ENTER')
+            input('     PRESS ENTER...')
             os.system('cls' if os.name == 'nt' else 'clear')
             print(gone_rogue_logo)
             print("Welcome to Gone Rogue")
@@ -184,7 +184,7 @@ def play_level(check_pos):
             level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 
 play_level(check_pos)
-input('Go deeper...')
+input('PRESS ENTER to go deeper...')
 
 
 ##################Level 2##################
@@ -230,11 +230,70 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 
 play_level(check_pos)
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
+print(f"""
+Got what was coming to 'em.
+Nobody steals {hero.name}'s property...""")
+input('\nSEARCH THE ROOM...')
+print('\n*fumbling*...')
+input()
+print('I knew it...')
+input()
+os.system('cls' if os.name == 'nt' else 'clear')
+
+print("""                       
+              (((((((((((((             
+          /((((((       ((((((.         
+          /((((((       ((((((.         
+          /((((((       ((((((.         
+          /((((((       ((((((.         
+          /((((((       ((((((.         
+           ...(((///////(((...          
+              (((((((((((((             
+                 (((((((                
+          /(((((((((((((((((((.         
+           ......(((((((......          
+                 (((((((                
+                 (((((((                
+                                        """)
+
+print('...this asshole stole THE AMULET')
+input('\nTAKE THE AMULET...')
+print ("\033[A                             \033[A")
+print("\nThis'll make a sweet offering in exchange for immortality...")
+input()
+
+
+os.system('cls' if os.name == 'nt' else 'clear')
+print("CONGRATULATIONS")
+print('You have...')
+
+input()
+
+print("""
+  ▄████  ▒█████   ███▄    █ ▓█████ 
+ ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀ 
+▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███   
+░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄ 
+░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒
+ ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░
+  ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░
+░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░   
+      ░     ░ ░           ░    ░  ░""")
+input()
+print("""
+ ██▀███   ▒█████    ▄████  █    ██ ▓█████ 
+▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀ 
+▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███   
+▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄ 
+░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
+░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
+  ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
+  ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░   
+   ░         ░ ░        ░    ░        ░  ░""")
+
+print('PRESS RUN to play again.')
 
 
 
-    
-
-
-
-# level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
