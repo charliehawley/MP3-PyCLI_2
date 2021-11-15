@@ -85,7 +85,7 @@ hero = entity.hero_init()
 print ("\033[A                             \033[A")
 print ("\033[A                             \033[A")
 
-ent_dict = {'runt': ['runt', 5, 2], 'bruiser': ['bruiser', 10, 2], 'boss': ['boss', 20, 3], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
+ent_dict = {'runt': ['runt', 5, 3], 'bruiser': ['bruiser', 10, 5], 'boss': ['boss', 20, 7], 'lunch': ['lunch', 0, 5], 'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
 
 ent_names = list(ent_dict.keys())
 
@@ -110,17 +110,41 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 
 def battle():
         enemy.hp -= hero.power
-        print(f'\n{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.hp}')
-        if hero.hp < 0:
-            print("That's GAME OVER pal!")
-        elif hero.hp > 0 and enemy.hp <= 0:
+        print('\n')
+        print(f'{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.hp}')
+        input()
+        if hero.hp > 0 and enemy.hp <= 0:
             print(f'You defeated {enemy.name}!')
         else:
             hero.hp -= enemy.power
             hero_map_att[0] -= enemy.power
             print(f'{enemy.name} hits {hero.name}. {hero.name} hp: {hero.hp}')
+            input()
+            print ("\033[A                             \033[A")
             if hero.hp < 0:
-                print("That's GAME OVER pal!")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print("""  
+  ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███     
+ ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒   
+▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒   
+░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄     
+░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒   
+ ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░   
+  ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░   
+░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░    
+      ░       ░  ░    ██▓███   ▄▄▄ ░     ██▓ ░   ▐██▌ ░     ░  ░   ░        
+                     ▓██░  ██▒▒████▄    ▓██▒     ▐██▌░                      
+                     ▓██░ ██▓▒▒██  ▀█▄  ▒██░     ▐██▌                       
+                     ▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██░     ▓██▒                       
+                     ▒██▒ ░  ░ ▓█   ▓██▒░██████▒ ▒▄▄                        
+                     ▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░▓  ░ ░▀▀▒                       
+                     ░▒ ░       ▒   ▒▒ ░░ ░ ▒  ░ ░  ░                       
+                     ░░         ░   ▒     ░ ░       ░                       
+                                    ░  ░    ░  ░ ░                          
+                                                                            """)
+                input()
+                print('CLICK RUN to play again.')
+                exit()
             elif hero.hp > 0 and enemy.hp < 0:
                 print(f'You defeated {enemy.name}!')
             else:
