@@ -8,7 +8,7 @@ class Ent:
         self.icon = name[0]
         self.position = position
 
-hero_position = [(randint(0, 10)), (randint(0, 10))]
+hero_position = [(randint(0, 6)), (randint(0, 6))]
 
 def hero_init():
     while True:
@@ -24,29 +24,29 @@ def hero_init():
             print('But you must have a name?')
 
 def ents_init(enemy_ent, loot_ent):
-    enemy_position = [(randint(0, 10)), (randint(0, 10))]
+    enemy_position = [(randint(0, 6)), (randint(0, 6))]
 
     a = hero_position
     b = enemy_position
 
     while a == b:
-        enemy_position = [(randint(0, 10)), (randint(0, 10))]
+        enemy_position = [(randint(0, 6)), (randint(0, 6))]
 
     enemy_ent = Ent(enemy_ent[0], enemy_ent[1], enemy_ent[2], enemy_position)
 
-    loot_position = [(randint(0, 10)), (randint(0, 10))]
+    loot_position = [(randint(0, 6)), (randint(0, 6))]
     c = loot_position
 
     while c == a or c == b:
-        loot_position = [(randint(0, 10)), (randint(0, 10))]
+        loot_position = [(randint(0, 6)), (randint(0, 6))]
 
     loot_ent = Ent(loot_ent[0], loot_ent[1], loot_ent[2], loot_position)
 
-    stairs_position = [(randint(0, 10)), (randint(0, 10))]
+    stairs_position = [(randint(0, 6)), (randint(0, 6))]
     d = stairs_position
 
     while d == a or d == b or d == c:
-        stairs_position = [(randint(0, 10)), (randint(0, 10))]
+        stairs_position = [(randint(0, 6)), (randint(0, 6))]
 
     stairs = Ent('stairs', 0, 0, stairs_position)
 
