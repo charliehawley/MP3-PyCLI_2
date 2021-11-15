@@ -110,6 +110,7 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 
 def battle():
         enemy.hp -= hero.power
+        enemy.hp -= hero_map_att[1]
         print(f'\n{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.hp}')
         if hero.hp < 0:
             print("That's GAME OVER pal!")
@@ -117,6 +118,7 @@ def battle():
             print(f'You defeated {enemy.name}!')
         else:
             hero.hp -= enemy.power
+            hero_map_att[0] -= enemy.power
             print(f'{enemy.name} hits {hero.name}. {hero.name} hp: {hero.hp}')
             if hero.hp < 0:
                 print("That's GAME OVER pal!")
@@ -169,7 +171,7 @@ def play_level(check_pos):
         elif check_pos == 'oob':
             os.system('cls' if os.name == 'nt' else 'clear')
             level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
-            print("You walk into a wall.\n")
+            print("You walked into a wall.\n")
             move = input('Where would you like to go...?\n')
             check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map, map_limit)
             hero_map_att[3] = hero_index
@@ -207,6 +209,7 @@ hero_map_att[3] = hero_index
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, stairs.position, gone_rogue_logo)
 
 play_level(check_pos)
+input('PRESS ENTER to go deeper...')
 
 
 ##################Level 3##################
