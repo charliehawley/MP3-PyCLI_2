@@ -260,10 +260,11 @@ print("""
                  (((((((                
                                         """)
 input()
-print('...this asshole stole THE AMULET')
-input('\nTAKE THE AMULET...')
+print('...this asshole stole THE AMULET.')
+input()
+input('TAKE THE AMULET...')
 print ("\033[A                             \033[A")
-print("\nThis'll make a sweet offering in exchange for immortality...")
+print("This'll make a sweet offering in exchange for immortality...")
 input()
 
 
@@ -295,7 +296,7 @@ print("""
   ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░   
    ░         ░ ░        ░    ░        ░  ░""")
 input()
-print('PRESS RUN to play again.')
+print('CLICK RUN to play again.')
 
 
 
