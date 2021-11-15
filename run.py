@@ -110,7 +110,6 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position, 
 
 def battle():
         enemy.hp -= hero.power
-        enemy.hp -= hero_map_att[1]
         print(f'\n{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.hp}')
         if hero.hp < 0:
             print("That's GAME OVER pal!")
@@ -260,7 +259,7 @@ print("""
                  (((((((                
                  (((((((                
                                         """)
-
+input()
 print('...this asshole stole THE AMULET')
 input('\nTAKE THE AMULET...')
 print ("\033[A                             \033[A")
@@ -295,7 +294,7 @@ print("""
   ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
   ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░   
    ░         ░ ░        ░    ░        ░  ░""")
-
+input()
 print('PRESS RUN to play again.')
 
 
