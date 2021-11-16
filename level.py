@@ -1,15 +1,15 @@
-"""Level Module: 
+"""Level Module:
 This module handles the UI for Gone Rouge,
 generating and printing maps to the CLI,
-initialising entities, spawning entity sprites 
+initialising entities, spawning entity sprites
 and moving the hero sprite.
 
 Functions:
-- check_hero_pos: checks for entity encounter
-- largest index position
-
-
-"""
+    - LevelMapGen (__init__)
+    - largest index position
+    - print_map
+    - check_hero_pos
+    - move_hero"""
 import os
 
 
@@ -19,7 +19,7 @@ class LevelMapGen:
 
         ARGS: integer representing maximum map size
 
-        RETURNS: list as 'map' to be iterated through
+        RETURNS: object - list as 'map' to be iterated through
                  and printed on screen
     """
     def __init__(self, num):
