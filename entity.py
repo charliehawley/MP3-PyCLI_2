@@ -4,6 +4,8 @@
 from random import randint
 
 
+hero_position = [(randint(0, 6)), (randint(0, 6))]
+
 class Ent:
     def __init__(self, name, h_p, power, position):
         self.name = name
@@ -11,9 +13,6 @@ class Ent:
         self.power = power
         self.icon = name[0]
         self.position = position
-
-
-hero_position = [(randint(0, 6)), (randint(0, 6))]
 
 
 def hero_init():
@@ -28,13 +27,16 @@ def hero_init():
                 return hero
             else:
                 print("""
-That's an unusual name, 
-would you mind anglicizing it...""")
+    That's an unusual name,
+    would you mind anglicizing it...""")
         except IndexError:
             print('But you must have a name?')
 
 
 def ents_init(enemy_ent, loot_ent):
+    """
+    
+    """
     enemy_position = [(randint(0, 6)), (randint(0, 6))]
 
     a = hero_position

@@ -28,37 +28,37 @@ def menu():
             print("\033[A                                             \033[A")
             print("\033[A                                             \033[A\n")
             print("""
-The year is 1980. Miami is burning, Post-Its just hit the shelves, 
-the MGM is on fire and somebody just shot John Lennon. 
-PRESS ENTER""")
+    The year is 1980. Miami is burning, Post-Its just hit the shelves, 
+    the MGM is on fire and somebody just shot John Lennon. 
+    PRESS ENTER""")
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
             print("""
-The world is chaotic and unpredictable. 
-Will there be peace? Will there be justice? Will there be revolution?
+    The world is chaotic and unpredictable. 
+    Will there be peace? Will there be justice? Will there be revolution?
             """)
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
             print("""
-Enter procedural generation, 
-a way of producing 'randomised' worlds from stable rules.""")
+    Enter procedural generation, 
+    a way of producing 'randomised' worlds from stable rules.""")
             input()
             print("\033[A                             \033[A")
             print("""
-This is the world of Rogue, the original Roguelike game that bore an entire genre
-dedicated to those seeking to witness the illusion of control shattering before them.""")
+    This is the world of Rogue, the original Roguelike game that bore an entire genre
+    dedicated to those seeking to witness the illusion of control shattering before them.""")
             input()
             print("\033[A                             \033[A")
             print("""
-It gave them something they had never seen before. 
-The game had agency, a life of its own.""")
+    It gave them something they had never seen before. 
+    The game had agency, a life of its own.""")
             input()
             print("\033[A                             \033[A")
             print("""
-Now, 40 years later, entropy has flaunted its inescapable will 
-and laid waste to the already waning optimism of the mid 20th Century.""")
+    Now, 40 years later, entropy has flaunted its inescapable will 
+    and laid waste to the already waning optimism of the mid 20th Century.""")
             input()
             print("\033[A                             \033[A")
             print("\nThe only cure? Surrendering yourself to endless possibility.")
@@ -80,25 +80,25 @@ and laid waste to the already waning optimism of the mid 20th Century.""")
             print("\033[A                             \033[A")
             print("\033[A                                      \033[A")
             print("""
-The world of Gone Rogue is unique every time you play.
-Once you enter the game, randomness dictates your experience.
-Many parameters of the game like map size,
-loot attributes, and spawn positions are randomised.
+    The world of Gone Rogue is unique every time you play.
+    Once you enter the game, randomness dictates your experience.
+    Many parameters of the game like map size,
+    loot attributes, and spawn positions are randomised.
 
-To navigate through the world you must input a direction and press enter.
+    To navigate through the world you must input a direction and press enter.
 
-w = ^
-a = <
-s = v
-d = >
+    w = ^
+    a = <
+    s = v
+    d = >
 
-You'll want to grab any loot available (?) before beginning encounters.
-Loot has randomised effects. You could find a nutritious lunch,
-or end up making sacrifices for your blood sport.
+    You'll want to grab any loot available (?) before beginning encounters.
+    Loot has randomised effects. You could find a nutritious lunch,
+    or end up making sacrifices for your blood sport.
 
-Enemy (#) encounters are triggered by walking over them.
-Once you step into an encounter there's no going back,
-in the world of Gone Rogue, it's always a fight to the death.""")
+    Enemy (#) encounters are triggered by walking over them.
+    Once you step into an encounter there's no going back,
+    in the world of Gone Rogue, it's always a fight to the death.""")
             input('     PRESS ENTER...')
             os.system('cls' if os.name == 'nt' else 'clear')
             print(gone_rogue_logo)
@@ -137,16 +137,16 @@ map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
 level_map = level.LevelMapGen(map_limit)
 hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
-level_map.print_map(level_map.map, hero_map_att, enemy.position,
+level.print_map(level_map.map, hero_map_att, enemy.position,
                     loot.position, stairs.position, gone_rogue_logo)
 check_pos = 'walk'
 
 move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map,
+check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
                                             map_limit)
 
 hero_map_att[3] = hero_index
-level_map.print_map(level_map.map, hero_map_att, enemy.position,
+level.print_map(level_map.map, hero_map_att, enemy.position,
                     loot.position, stairs.position, gone_rogue_logo)
 
 
@@ -168,23 +168,23 @@ def battle():
             input()
             os.system('cls' if os.name == 'nt' else 'clear')
             print("""
-  ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
- ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
-▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
-░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄
-░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
- ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
-  ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
-░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░
-      ░       ░  ░    ██▓███   ▄▄▄ ░     ██▓ ░   ▐██▌ ░     ░  ░   ░
-                     ▓██░  ██▒▒████▄    ▓██▒     ▐██▌░
-                     ▓██░ ██▓▒▒██  ▀█▄  ▒██░     ▐██▌
-                     ▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██░     ▓██▒
-                     ▒██▒ ░  ░ ▓█   ▓██▒░██████▒ ▒▄▄
-                     ▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░▓  ░ ░▀▀▒
-                     ░▒ ░       ▒   ▒▒ ░░ ░ ▒  ░ ░  ░
-                     ░░         ░   ▒     ░ ░       ░
-                                    ░  ░    ░  ░ ░""")
+    ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
+    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
+    ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
+    ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄
+    ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
+    ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
+    ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
+    ░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░
+        ░       ░  ░    ██▓███   ▄▄▄ ░     ██▓ ░   ▐██▌ ░     ░  ░   ░
+                        ▓██░  ██▒▒████▄    ▓██▒     ▐██▌░
+                        ▓██░ ██▓▒▒██  ▀█▄  ▒██░     ▐██▌
+                        ▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██░     ▓██▒
+                        ▒██▒ ░  ░ ▓█   ▓██▒░██████▒ ▒▄▄
+                        ▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░▓  ░ ░▀▀▒
+                        ░▒ ░       ▒   ▒▒ ░░ ░ ▒  ░ ░  ░
+                        ░░         ░   ▒     ░ ░       ░
+                                        ░  ░    ░  ░ ░""")
             input()
             print('CLICK RUN to play again.')
             sys.exit()
@@ -199,11 +199,11 @@ def play_level(check_pos):
     while True:
         if check_pos == 'walk':
             move = input('\nWhere would you like to go...?\n')
-            check_pos, hero_index = level_map.move_hero(hero_map_att, move,
+            check_pos, hero_index = level.move_hero(hero_map_att, move,
                                                         level_map.map,
                                                         map_limit)
             hero_map_att[3] = hero_index
-            level_map.print_map(level_map.map, hero_map_att, enemy.position,
+            level.print_map(level_map.map, hero_map_att, enemy.position,
                                 loot.position, stairs.position,
                                 gone_rogue_logo)
             continue
@@ -243,30 +243,30 @@ def play_level(check_pos):
             break
         elif check_pos == 'oob':
             os.system('cls' if os.name == 'nt' else 'clear')
-            level_map.print_map(level_map.map, hero_map_att, enemy.position,
+            level.print_map(level_map.map, hero_map_att, enemy.position,
                                 loot.position, stairs.position,
                                 gone_rogue_logo)
             print("You walked into a wall.\n")
             move = input('Where would you like to go...?\n')
-            check_pos, hero_index = level_map.move_hero(hero_map_att, move,
+            check_pos, hero_index = level.move_hero(hero_map_att, move,
                                                         level_map.map,
                                                         map_limit)
             hero_map_att[3] = hero_index
-            level_map.print_map(level_map.map, hero_map_att, enemy.position,
+            level.print_map(level_map.map, hero_map_att, enemy.position,
                                 loot.position, stairs.position,
                                 gone_rogue_logo)
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
-            level_map.print_map(level_map.map, hero_map_att, enemy.position,
+            level.print_map(level_map.map, hero_map_att, enemy.position,
                                 loot.position, stairs.position,
                                 gone_rogue_logo)
             print('\nUse\nw - up\na - left\ns - down\nd -right\nto move...\n')
             move = input('Where would you like to go...?\n')
-            check_pos, hero_index = level_map.move_hero(hero_map_att, move,
+            check_pos, hero_index = level.move_hero(hero_map_att, move,
                                                         level_map.map,
                                                         map_limit)
             hero_map_att[3] = hero_index
-            level_map.print_map(level_map.map, hero_map_att, enemy.position,
+            level.print_map(level_map.map, hero_map_att, enemy.position,
                                 loot.position, stairs.position,
                                 gone_rogue_logo)
 
@@ -285,17 +285,17 @@ map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
 level_map = level.LevelMapGen(map_limit)
 hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
-level_map.print_map(level_map.map, hero_map_att, enemy.position,
+level.print_map(level_map.map, hero_map_att, enemy.position,
                     loot.position, stairs.position, gone_rogue_logo)
 check_pos = 'walk'
 
 move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map,
+check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
                                             map_limit)
 # print(check_pos, hero_index)
 
 hero_map_att[3] = hero_index
-level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
+level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
                     stairs.position, gone_rogue_logo)
 
 play_level(check_pos)
@@ -312,16 +312,16 @@ map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
 level_map = level.LevelMapGen(map_limit)
 hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
-level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
+level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
                     stairs.position, gone_rogue_logo)
 check_pos = 'walk'
 
 move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level_map.move_hero(hero_map_att, move, level_map.map,
+check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
                                             map_limit)
 
 hero_map_att[3] = hero_index
-level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
+level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
                     stairs.position, gone_rogue_logo)
 
 play_level(check_pos)
@@ -369,25 +369,25 @@ print('You have...')
 input()
 
 print("""
-  ▄████  ▒█████   ███▄    █ ▓█████
- ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀
-▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███
-░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█
-░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒
- ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░
-  ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░
-░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░
-      ░     ░ ░           ░    ░  ░""")
+    ▄████  ▒█████   ███▄    █ ▓█████
+    ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀
+    ▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███
+    ░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█
+    ░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒
+    ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░
+    ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░
+    ░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░
+        ░     ░ ░           ░    ░  ░""")
 input()
 print("""
- ██▀███   ▒█████    ▄████  █    ██ ▓█████
-▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
-▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
-▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
-░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
-░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
-  ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
-  ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
-  ░         ░ ░        ░    ░        ░  ░""")
+    ██▀███   ▒█████    ▄████  █    ██ ▓█████
+    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
+    ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
+    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
+    ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
+    ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
+    ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
+    ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
+    ░         ░ ░        ░    ░        ░  ░""")
 input()
 print('CLICK RUN to play again.')
