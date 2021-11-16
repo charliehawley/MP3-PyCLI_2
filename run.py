@@ -305,7 +305,7 @@ itching to get to work.''')
             level.print_map(level_map.map, hero_map_att, enemy.position,
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
             print('\nUse\nw - up\na - left\ns - down\nd -right\nto move...\n')
-            move = input('Where would you like to go...?\n')
+            move = input('Which way...?\n')
             state, hero_index = level.move_hero(hero_map_att, move,
                                                 level_map.map, map_limit)
             hero_map_att[3] = hero_index

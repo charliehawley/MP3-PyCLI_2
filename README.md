@@ -70,6 +70,7 @@ OUT OF SCOPE?
 - music? sound effects?
 - Compass?  C: ^ > v < x		where x means sprite is within one move of an object
 - Q to fight
+- freeze state on entities, miss attack turn
 - Event listeners for movement
 - Difficulty: hard lowers hero hp 
 	- testing showed that game is well balanced currently at 15hp, 10hp probs too hard
@@ -81,8 +82,15 @@ OUT OF SCOPE?
 - easter egg indexes
 - expand item pool
 
+## KNOWN BUGS
 
+- spawn on ents on level 3
+- level 2 sometimes creates an input loop on level exit (interaction with stairs)
 
+## FIXED BUGS
+
+- menu glitch
+- loot after spawn
 
 ## DEPLOYMENT
 
