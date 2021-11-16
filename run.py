@@ -7,15 +7,15 @@ import level
 
 CHECK_POS = 'walk'
 GONE_ROGUE_LOGO = """
-    ▄████  ▒█████   ███▄    █ ▓█████     ██▀███   ▒█████    ▄████  █    ██ ▓█████
-    ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
-    ▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
-    ░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
-    ░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████
-    ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░
-    ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░
-    ░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
-        ░     ░ ░           ░    ░  ░      ░         ░ ░        ░    ░        ░"""
+  ▄████  ▒█████   ███▄    █ ▓█████     ██▀███   ▒█████    ▄████  █    ██ ▓█████
+ ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
+▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
+░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
+░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████
+░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░
+░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░
+░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
+    ░     ░ ░           ░    ░  ░      ░         ░ ░        ░    ░        ░"""
 
 ent_dict = {'runt': ['runt', 5, 3], 'bruiser': ['bruiser', 10, 5],
             'boss': ['boss', 20, 7], 'lunch': ['lunch', 0, 5],
@@ -31,56 +31,76 @@ enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
 
 
 def menu():
+    """
+    Handles UI for the title screen of Gone Rogue
+
+        ARGS: strings - 'i', 'h', 's'
+
+        RETURNS: - introduction to the game and its historical context
+            or   - instructions describing how to interact with the game
+            or   - starts the game loop"""
+    
+    # clears game screen
     os.system('cls' if os.name == 'nt' else 'clear')
+    # prints title
     print(GONE_ROGUE_LOGO)
     print("Welcome to Gone Rogue")
+    # creates menu loop
     while True:
         menu_choice = input('\ni = intro, h = how to play, s = start\n')
+
+        # on user input 'i' prints introduction
         if menu_choice == 'i':
+            # print statements with values of ("\033[A \033[A") 
+            # remove the line above
             print("\033[A                                            \033[A")
             print("\033[A                                            \033[A")
             print("\033[A                                            \033[A\n")
             print("""
-    The year is 1980. Miami is burning, Post-Its just hit the shelves, 
-    the MGM is on fire and somebody just shot John Lennon. 
+    The year is 1980. Miami is burning, Post-Its just hit the shelves,
+    the MGM is on fire and somebody just shot John Lennon.
     PRESS ENTER""")
+            # empty input to allow user to cue the next line when they're ready
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
             print("""
-    The world is chaotic and unpredictable. 
+    The world is chaotic and unpredictable.
     Will there be peace? Will there be justice? Will there be revolution?
             """)
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
             print("""
-    Enter procedural generation, 
+    Enter procedural generation,
     a way of producing 'randomised' worlds from stable rules.""")
             input()
             print("\033[A                             \033[A")
             print("""
-    This is the world of Rogue, the original Roguelike game that bore an entire genre
-    dedicated to those seeking to witness the illusion of control shattering before them.""")
+    This is the world of Rogue, the original Roguelike game
+    that bore an entire genre dedicated to those seeking to witness
+    the illusion of control shattering before them.""")
             input()
             print("\033[A                             \033[A")
             print("""
-    It gave them something they had never seen before. 
+    It gave them something they had never seen before.
     The game had agency, a life of its own.""")
             input()
             print("\033[A                             \033[A")
             print("""
-    Now, 40 years later, entropy has flaunted its inescapable will 
+    Now, 40 years later, entropy has flaunted its inescapable will
     and laid waste to the already waning optimism of the mid 20th Century.""")
             input()
             print("\033[A                             \033[A")
-            print("\n    The only cure? Surrendering yourself to endless possibility.")
+            print("""\n    The only cure?
+    Surrendering yourself to endless possibility.""")
             input()
             print("\033[A                             \033[A")
-            print("\n    Some can follow their instincts and get their hands dirty,")
+            print("""\n    Some can follow their instincts
+    and get their hands dirty.""")
             input()
             print("\033[A                             \033[A")
-            print("    others fall behind trying to reason with the chaos.")
+            print("\n    Others fall behind trying to reason with the chaos.")
             input()
             print("\033[A                             \033[A")
             print("\n    How will you fare in the bloody world of GONE ROGUE?")
@@ -88,6 +108,8 @@ def menu():
             os.system('cls' if os.name == 'nt' else 'clear')
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
+
+        # prints instructions on how to play the game
         elif menu_choice == 'h':
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
@@ -117,17 +139,30 @@ def menu():
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
 
+        # breaks out of menu loop
         elif menu_choice == 's':
+            print("\033[A \033[A")
             print('It begins...')
+            input()
+
             os.system('cls' if os.name == 'nt' else 'clear')
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
             break
-        else:
-            menu()
+        # else:
+        #     menu()
 
 
 def battle():
+    """
+    Handles encounter between hero and enemy
+
+        ARGS: object attributes - (hero.h_p, hero.power,
+                                   enemy.h_p, enemy.power)
+
+        RETURNS: - update's hero objects hp
+                 - prints outcome of battle
+    """
     enemy.h_p -= hero.power
     print('\n')
     print(f'{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.h_p}')
@@ -145,8 +180,8 @@ def battle():
             input()
             os.system('cls' if os.name == 'nt' else 'clear')
             print("""
-    ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
-    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
+      ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
+     ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
     ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
     ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄
     ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
@@ -172,17 +207,27 @@ def battle():
             battle()
 
 
-def play_level(CHECK_POS):
+def play_level(state):
+    """
+    Handles the game loop
+
+        ARGS: string - describes the state of the hero's current position
+
+        RETURNS: - prints dialogue for each encounter
+                 - updates hero position
+                 - updates hero power
+                 - breaks game loop when stairs encountered
+                 - validates user input"""
     while True:
-        if CHECK_POS == 'walk':
+        if state == 'walk':
             move = input('\nWhere would you like to go...?\n')
-            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
-                                                    level_map.map, map_limit)
+            state, hero_index = level.move_hero(hero_map_att, move,
+                                                level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
             continue
-        if CHECK_POS == 'loot':
+        if state == 'loot':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon
             loot.position = stairs.position
             print(f'\nYou picked up {loot.name}!')
@@ -206,24 +251,24 @@ def play_level(CHECK_POS):
                 hero_map_att[1] += loot.power
                 print("Is that ginger and chilli?")
                 print('WOW that packs a punch!')
-            CHECK_POS = 'walk'
+            state = 'walk'
             continue
-        if CHECK_POS == 'fight':
+        if state == 'fight':
             battle()
             enemy.position = stairs.position
-            CHECK_POS = 'walk'
-        elif CHECK_POS == 'stairs':
+            state = 'walk'
+        elif state == 'stairs':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon
             print('\nGoing down?')
             break
-        elif CHECK_POS == 'oob':
+        elif state == 'oob':
             os.system('cls' if os.name == 'nt' else 'clear')
             level.print_map(level_map.map, hero_map_att, enemy.position,
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
             print("You walked into a wall.\n")
             move = input('Where would you like to go...?\n')
-            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
-                                                    level_map.map, map_limit)
+            state, hero_index = level.move_hero(hero_map_att, move,
+                                                level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
@@ -233,8 +278,8 @@ def play_level(CHECK_POS):
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
             print('\nUse\nw - up\na - left\ns - down\nd -right\nto move...\n')
             move = input('Where would you like to go...?\n')
-            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
-                                                    level_map.map, map_limit)
+            state, hero_index = level.move_hero(hero_map_att, move,
+                                                level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
                             loot.position, stairs.position, GONE_ROGUE_LOGO)
@@ -242,7 +287,8 @@ def play_level(CHECK_POS):
 
 def success():
     """
-    """
+    Prints dialogue after level 3 game loop is broken
+    and directs user to the run button should they want to replay"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print(f"""
@@ -266,13 +312,13 @@ def success():
             /((((((       ((((((.
             /((((((       ((((((.
             /((((((       ((((((.
-            ...(((///////(((...
+             ...(((///////(((...
                 (((((((((((((
-                    (((((((
+                   (((((((
             /(((((((((((((((((((.
-            ......(((((((......
-                    (((((((
-                    (((((((""")
+             ......(((((((......
+                   (((((((
+                   (((((((""")
     input()
 
     print('    ...this asshole stole THE AMULET.')
@@ -282,7 +328,6 @@ def success():
     print("\033[A                             \033[A")
     print("    This'll make a sweet offering in exchange for immortality...")
     input()
-
 
     os.system('cls' if os.name == 'nt' else 'clear')
     print("    CONGRATULATIONS")
@@ -378,7 +423,7 @@ level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
 
 move = input('\nWhere would you like to go...?\n')
 CHECK_POS, hero_index = level.move_hero(hero_map_att, move, level_map.map,
-                                            map_limit)
+                                        map_limit)
 
 hero_map_att[3] = hero_index
 level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
