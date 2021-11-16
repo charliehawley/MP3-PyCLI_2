@@ -226,7 +226,7 @@ def play_level(state):
                  - validates user input"""
     while True:
         if state == 'walk':
-            move = input('\nWhere would you like to go...?\n')
+            move = input('\nWhich way...?\n')
             state, hero_index = level.move_hero(hero_map_att, move,
                                                 level_map.map, map_limit)
             hero_map_att[3] = hero_index
