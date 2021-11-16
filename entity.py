@@ -1,27 +1,38 @@
+"""
+
+"""
 from random import randint
 
+
 class Ent:
-    def __init__(self, name, hp, power, position):
+    def __init__(self, name, h_p, power, position):
         self.name = name
-        self.hp = hp
+        self.h_p = h_p
         self.power = power
         self.icon = name[0]
         self.position = position
 
+
 hero_position = [(randint(0, 6)), (randint(0, 6))]
 
+
 def hero_init():
+    """
+    Initialises hero using Ent class and validates user input
+    """
     while True:
-        try: 
+        try:
             h_name = input('\nWhat is your name hero?\n')
             if h_name[0].isalpha():
                 hero = Ent(h_name, 15, 3, hero_position)
                 return hero
-                break
             else:
-                print("That's an unusual name, would you mind anglicizing it...")
-        except IndexError as e:
+                print("""
+That's an unusual name, 
+would you mind anglicizing it...""")
+        except IndexError:
             print('But you must have a name?')
+
 
 def ents_init(enemy_ent, loot_ent):
     enemy_position = [(randint(0, 6)), (randint(0, 6))]

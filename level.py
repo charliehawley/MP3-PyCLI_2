@@ -1,26 +1,49 @@
+"""
+
+"""
 import os
-from random import randint
+
 
 def check_hero_pos(lst_lst, hero_next_pos):
+    """
+    Checks for entity in position requested for hero by user
+    returns string to be used to trigger encounters
+    """
     print(hero_next_pos)
     if lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '/':
-        return 'stairs' #will return 'stairs' which will load next level
-    elif lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '?':
-        return 'loot' #will return 'loot' which will trigger loot.name's effect
-    elif lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '#':
-        return 'fight' #will return 'enemy' which will trigger e.hp - h.pow, h.hp - e.pow until either hp is depleted
+        return 'stairs'
+    if lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '?':
+        return 'loot'
+    if lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '#':
+        return 'fight'
     else:
         return 'walk'
 
-def largest_index_position(lst1, lst2, lst3, lst4):
-    indexes = [x for x in [max(lst1), max(lst2), max(lst3), max(lst4)]]
-    return (max(indexes))
 
-class level_map_gen:
-    def __init__(self, int):
-        self.map = [['-' for x in range(0, int + 1)] for x in range(0, int + 1)]
-    
-    def print_map(self, lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos, gone_rogue_logo):
+def largest_index_position(lst1, lst2, lst3, lst4):
+    """
+    Takes indexes for all entities and returns an integer
+    representing the maximum map size for rendering the level
+    """
+    indexes = [max(lst1), max(lst2), max(lst3), max(lst4)]
+    return max(indexes)
+
+
+class LevelMapGen:
+    """
+    Creates an instance of the level
+    and stores 'map' as list to be iterated through
+    and printed on screen
+    """
+    def __init__(self, num):
+        self.map = [['-' for x in range(0, num + 1)]
+                    for x in range(0, num + 1)]
+
+    def print_map(self, lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos,
+                  gone_rogue_logo):
+        """
+        Prints level to terminal using self.map list
+        """
         os.system('cls' if os.name == 'nt' else 'clear')
         print(gone_rogue_logo)
         print("Welcome to Gone Rogue\n")
@@ -34,6 +57,9 @@ class level_map_gen:
         print('# = enemy, ? = loot, / = stairs')
 
     def move_hero(self, hero_lst, dir, lst_lst, map_limit):
+        """
+        Changes hero posiiton index based on user input
+        """
         if dir == 'w':
             if (hero_lst[3][0] - 1) < 0:
                 return ['oob', hero_lst[3]]

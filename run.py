@@ -108,8 +108,8 @@ enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
 
 map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
-level_map = level.level_map_gen(map_limit)
-hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
+level_map = level.LevelMapGen(map_limit)
+hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
 level_map.print_map(level_map.map, hero_map_att, enemy.position,
                     loot.position, stairs.position, gone_rogue_logo)
 check_pos = 'walk'
@@ -124,19 +124,19 @@ level_map.print_map(level_map.map, hero_map_att, enemy.position,
 
 
 def battle():
-    enemy.hp -= hero.power
+    enemy.h_p -= hero.power
     print('\n')
-    print(f'{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.hp}')
+    print(f'{hero.name} hits {enemy.name}. {enemy.name} hp: {enemy.h_p}')
     input()
-    if enemy.hp <= 0:
+    if enemy.h_p <= 0:
         print(f'You defeated {enemy.name}!')
     else:
-        hero.hp -= enemy.power
+        hero.h_p -= enemy.power
         hero_map_att[0] -= enemy.power
-        print(f'{enemy.name} hits {hero.name}. {hero.name} hp: {hero.hp}')
+        print(f'{enemy.name} hits {hero.name}. {hero.name} hp: {hero.h_p}')
         input()
         print("\033[A                             \033[A")
-        if hero.hp < 0:
+        if hero.h_p < 0:
             print('Shit...')
             input()
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -161,7 +161,7 @@ def battle():
             input()
             print('CLICK RUN to play again.')
             sys.exit()
-        elif enemy.hp < 0:
+        elif enemy.h_p < 0:
             print(f'You defeated {enemy.name}!')
         else:
             battle()
@@ -185,7 +185,7 @@ def play_level(check_pos):
             print(f'\nYou picked up {loot.name}!')
             if loot.name == 'lunch':
                 level_map.map[hero_index[0]][hero_index[1]] = hero.icon
-                hero.hp += loot.power
+                hero.h_p += loot.power
                 hero_map_att[0] += loot.power
                 print("It's delicious...")
                 print(f'You gained {loot.power} hp.')
@@ -193,8 +193,8 @@ def play_level(check_pos):
                 level_map.map[hero_index[0]][hero_index[1]] = hero.icon
                 hero.power *= loot.power
                 hero_map_att[1] *= loot.power
-                hero.hp += loot.hp
-                hero_map_att[0] += loot.hp
+                hero.h_p += loot.h_p
+                hero_map_att[0] += loot.h_p
                 print('You feel way juiced, man! So juiced it hurts.')
                 print('Your bloodied fists twitch, itching to get to work.')
             else:
@@ -255,8 +255,8 @@ enemy, loot, stairs = entity.ents_init(l2[0], l2[1])
 
 map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
-level_map = level.level_map_gen(map_limit)
-hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
+level_map = level.LevelMapGen(map_limit)
+hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
 level_map.print_map(level_map.map, hero_map_att, enemy.position,
                     loot.position, stairs.position, gone_rogue_logo)
 check_pos = 'walk'
@@ -282,8 +282,8 @@ enemy, loot, stairs = entity.ents_init(l3[0], l3[1])
 
 map_limit = level.largest_index_position(hero.position, enemy.position,
                                          loot.position, stairs.position)
-level_map = level.level_map_gen(map_limit)
-hero_map_att = [hero.hp, hero.power, hero.icon, hero.position]
+level_map = level.LevelMapGen(map_limit)
+hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
 level_map.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
                     stairs.position, gone_rogue_logo)
 check_pos = 'walk'
@@ -303,6 +303,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 print(f"""
 Got what was coming to 'em.
 Nobody steals {hero.name}'s property...""")
+input()
 input('\nSEARCH THE ROOM...')
 print('\n*fumbling*...')
 input()
