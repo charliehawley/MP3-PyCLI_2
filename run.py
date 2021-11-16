@@ -4,29 +4,42 @@ from random import randint
 import entity
 import level
 
-gone_rogue_logo = """
-  ▄████  ▒█████   ███▄    █ ▓█████     ██▀███   ▒█████    ▄████  █    ██ ▓█████
- ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
-▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
-░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
-░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████
- ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░
-  ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░
-░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
-      ░     ░ ░           ░    ░  ░      ░         ░ ░        ░    ░        ░
-      """
+
+CHECK_POS = 'walk'
+GONE_ROGUE_LOGO = """
+    ▄████  ▒█████   ███▄    █ ▓█████     ██▀███   ▒█████    ▄████  █    ██ ▓█████
+    ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
+    ▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
+    ░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
+    ░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████
+    ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░
+    ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░
+    ░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
+        ░     ░ ░           ░    ░  ░      ░         ░ ░        ░    ░        ░"""
+
+ent_dict = {'runt': ['runt', 5, 3], 'bruiser': ['bruiser', 10, 5],
+            'boss': ['boss', 20, 7], 'lunch': ['lunch', 0, 5],
+            'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
+
+ent_names = list(ent_dict.keys())
+
+l1 = [ent_dict['runt'], ent_dict[ent_names[randint(3, 5)]]]
+l2 = [ent_dict['bruiser'], ent_dict[ent_names[randint(3, 5)]]]
+l3 = [ent_dict['boss'], ent_dict[ent_names[randint(3, 5)]]]
+
+enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
 
 
 def menu():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(gone_rogue_logo)
+    print(GONE_ROGUE_LOGO)
     print("Welcome to Gone Rogue")
     while True:
         menu_choice = input('\ni = intro, h = how to play, s = start\n')
         if menu_choice == 'i':
-            print("\033[A                                             \033[A")
-            print("\033[A                                             \033[A")
-            print("\033[A                                             \033[A\n")
+            print("\033[A                                            \033[A")
+            print("\033[A                                            \033[A")
+            print("\033[A                                            \033[A\n")
             print("""
     The year is 1980. Miami is burning, Post-Its just hit the shelves, 
     the MGM is on fire and somebody just shot John Lennon. 
@@ -61,19 +74,19 @@ def menu():
     and laid waste to the already waning optimism of the mid 20th Century.""")
             input()
             print("\033[A                             \033[A")
-            print("\nThe only cure? Surrendering yourself to endless possibility.")
+            print("\n    The only cure? Surrendering yourself to endless possibility.")
             input()
             print("\033[A                             \033[A")
-            print("\nSome can follow their instincts and get their hands dirty,")
+            print("\n    Some can follow their instincts and get their hands dirty,")
             input()
             print("\033[A                             \033[A")
-            print("others fall behind trying to reason with the chaos.")
+            print("    others fall behind trying to reason with the chaos.")
             input()
             print("\033[A                             \033[A")
-            print("\nHow will you fare in the bloody world of GONE ROGUE?")
+            print("\n    How will you fare in the bloody world of GONE ROGUE?")
             input()
             os.system('cls' if os.name == 'nt' else 'clear')
-            print(gone_rogue_logo)
+            print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
         elif menu_choice == 'h':
             print("\033[A                             \033[A")
@@ -101,53 +114,17 @@ def menu():
     in the world of Gone Rogue, it's always a fight to the death.""")
             input('     PRESS ENTER...')
             os.system('cls' if os.name == 'nt' else 'clear')
-            print(gone_rogue_logo)
+            print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
 
         elif menu_choice == 's':
             print('It begins...')
             os.system('cls' if os.name == 'nt' else 'clear')
-            print(gone_rogue_logo)
+            print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
             break
         else:
             menu()
-
-
-menu()
-
-hero = entity.hero_init()
-
-print("\033[A                             \033[A")
-print("\033[A                             \033[A")
-
-ent_dict = {'runt': ['runt', 5, 3], 'bruiser': ['bruiser', 10, 5],
-            'boss': ['boss', 20, 7], 'lunch': ['lunch', 0, 5],
-            'stimulant': ['stimulant', -2, 2], 'vigour': ['vigour', 0, 3]}
-
-ent_names = list(ent_dict.keys())
-
-l1 = [ent_dict['runt'], ent_dict[ent_names[randint(3, 5)]]]
-l2 = [ent_dict['bruiser'], ent_dict[ent_names[randint(3, 5)]]]
-l3 = [ent_dict['boss'], ent_dict[ent_names[randint(3, 5)]]]
-
-enemy, loot, stairs = entity.ents_init(l1[0], l1[1])
-
-map_limit = level.largest_index_position(hero.position, enemy.position,
-                                         loot.position, stairs.position)
-level_map = level.LevelMapGen(map_limit)
-hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
-level.print_map(level_map.map, hero_map_att, enemy.position,
-                    loot.position, stairs.position, gone_rogue_logo)
-check_pos = 'walk'
-
-move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
-                                            map_limit)
-
-hero_map_att[3] = hero_index
-level.print_map(level_map.map, hero_map_att, enemy.position,
-                    loot.position, stairs.position, gone_rogue_logo)
 
 
 def battle():
@@ -195,19 +172,17 @@ def battle():
             battle()
 
 
-def play_level(check_pos):
+def play_level(CHECK_POS):
     while True:
-        if check_pos == 'walk':
+        if CHECK_POS == 'walk':
             move = input('\nWhere would you like to go...?\n')
-            check_pos, hero_index = level.move_hero(hero_map_att, move,
-                                                        level_map.map,
-                                                        map_limit)
+            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
+                                                    level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
-                                loot.position, stairs.position,
-                                gone_rogue_logo)
+                            loot.position, stairs.position, GONE_ROGUE_LOGO)
             continue
-        if check_pos == 'loot':
+        if CHECK_POS == 'loot':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon
             loot.position = stairs.position
             print(f'\nYou picked up {loot.name}!')
@@ -231,47 +206,134 @@ def play_level(check_pos):
                 hero_map_att[1] += loot.power
                 print("Is that ginger and chilli?")
                 print('WOW that packs a punch!')
-            check_pos = 'walk'
+            CHECK_POS = 'walk'
             continue
-        if check_pos == 'fight':
+        if CHECK_POS == 'fight':
             battle()
             enemy.position = stairs.position
-            check_pos = 'walk'
-        elif check_pos == 'stairs':
+            CHECK_POS = 'walk'
+        elif CHECK_POS == 'stairs':
             level_map.map[hero_index[0]][hero_index[1]] = hero.icon
             print('\nGoing down?')
             break
-        elif check_pos == 'oob':
+        elif CHECK_POS == 'oob':
             os.system('cls' if os.name == 'nt' else 'clear')
             level.print_map(level_map.map, hero_map_att, enemy.position,
-                                loot.position, stairs.position,
-                                gone_rogue_logo)
+                            loot.position, stairs.position, GONE_ROGUE_LOGO)
             print("You walked into a wall.\n")
             move = input('Where would you like to go...?\n')
-            check_pos, hero_index = level.move_hero(hero_map_att, move,
-                                                        level_map.map,
-                                                        map_limit)
+            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
+                                                    level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
-                                loot.position, stairs.position,
-                                gone_rogue_logo)
+                            loot.position, stairs.position, GONE_ROGUE_LOGO)
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
             level.print_map(level_map.map, hero_map_att, enemy.position,
-                                loot.position, stairs.position,
-                                gone_rogue_logo)
+                            loot.position, stairs.position, GONE_ROGUE_LOGO)
             print('\nUse\nw - up\na - left\ns - down\nd -right\nto move...\n')
             move = input('Where would you like to go...?\n')
-            check_pos, hero_index = level.move_hero(hero_map_att, move,
-                                                        level_map.map,
-                                                        map_limit)
+            CHECK_POS, hero_index = level.move_hero(hero_map_att, move,
+                                                    level_map.map, map_limit)
             hero_map_att[3] = hero_index
             level.print_map(level_map.map, hero_map_att, enemy.position,
-                                loot.position, stairs.position,
-                                gone_rogue_logo)
+                            loot.position, stairs.position, GONE_ROGUE_LOGO)
 
 
-play_level(check_pos)
+def success():
+    """
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    print(f"""
+        Got what was coming to 'em.
+        Nobody steals {hero.name}'s property...""")
+    input()
+    input('\nSEARCH THE ROOM...')
+
+    print('\n*fumbling*...')
+    input()
+
+    print('    I knew it...')
+    input()
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    print("""
+                (((((((((((((
+            /((((((       ((((((.
+            /((((((       ((((((.
+            /((((((       ((((((.
+            /((((((       ((((((.
+            /((((((       ((((((.
+            ...(((///////(((...
+                (((((((((((((
+                    (((((((
+            /(((((((((((((((((((.
+            ......(((((((......
+                    (((((((
+                    (((((((""")
+    input()
+
+    print('    ...this asshole stole THE AMULET.')
+    input()
+    input('TAKE THE AMULET...')
+
+    print("\033[A                             \033[A")
+    print("    This'll make a sweet offering in exchange for immortality...")
+    input()
+
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("    CONGRATULATIONS")
+    print('    You have...')
+    input()
+
+    print("""
+            ▄████  ▒█████   ███▄    █ ▓█████
+            ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀
+            ▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███
+            ░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█
+            ░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒
+            ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░
+            ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░
+            ░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░
+                ░     ░ ░           ░    ░  ░""")
+    input()
+
+    print("""
+        ██▀███   ▒█████    ▄████  █    ██ ▓█████
+        ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
+        ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
+        ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
+        ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
+        ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
+        ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
+        ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
+        ░         ░ ░        ░    ░        ░  ░""")
+    input()
+
+    print('CLICK RUN to play again.')
+
+
+menu()
+
+hero = entity.hero_init()
+hero_index = hero.position
+
+print("\033[A                             \033[A")
+print("\033[A                             \033[A")
+
+# #################Level 1################# #
+map_limit = level.largest_index_position(hero.position, enemy.position,
+                                         loot.position, stairs.position)
+level_map = level.LevelMapGen(map_limit)
+hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
+level.print_map(level_map.map, hero_map_att, enemy.position,
+                loot.position, stairs.position, GONE_ROGUE_LOGO)
+
+play_level(CHECK_POS)
+
 input('PRESS ENTER to go deeper...')
 
 
@@ -286,19 +348,18 @@ map_limit = level.largest_index_position(hero.position, enemy.position,
 level_map = level.LevelMapGen(map_limit)
 hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
 level.print_map(level_map.map, hero_map_att, enemy.position,
-                    loot.position, stairs.position, gone_rogue_logo)
-check_pos = 'walk'
+                loot.position, stairs.position, GONE_ROGUE_LOGO)
 
 move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
-                                            map_limit)
-# print(check_pos, hero_index)
+CHECK_POS, hero_index = level.move_hero(hero_map_att, move, level_map.map,
+                                        map_limit)
 
 hero_map_att[3] = hero_index
 level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
-                    stairs.position, gone_rogue_logo)
+                stairs.position, GONE_ROGUE_LOGO)
 
-play_level(check_pos)
+play_level(CHECK_POS)
+
 input('PRESS ENTER to go deeper...')
 
 
@@ -313,81 +374,16 @@ map_limit = level.largest_index_position(hero.position, enemy.position,
 level_map = level.LevelMapGen(map_limit)
 hero_map_att = [hero.h_p, hero.power, hero.icon, hero.position]
 level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
-                    stairs.position, gone_rogue_logo)
-check_pos = 'walk'
+                stairs.position, GONE_ROGUE_LOGO)
 
 move = input('\nWhere would you like to go...?\n')
-check_pos, hero_index = level.move_hero(hero_map_att, move, level_map.map,
+CHECK_POS, hero_index = level.move_hero(hero_map_att, move, level_map.map,
                                             map_limit)
 
 hero_map_att[3] = hero_index
 level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
-                    stairs.position, gone_rogue_logo)
+                stairs.position, GONE_ROGUE_LOGO)
 
-play_level(check_pos)
+play_level(CHECK_POS)
 
-os.system('cls' if os.name == 'nt' else 'clear')
-
-print(f"""
-Got what was coming to 'em.
-Nobody steals {hero.name}'s property...""")
-input()
-input('\nSEARCH THE ROOM...')
-print('\n*fumbling*...')
-input()
-print('I knew it...')
-input()
-os.system('cls' if os.name == 'nt' else 'clear')
-
-print("""
-              (((((((((((((
-          /((((((       ((((((.
-          /((((((       ((((((.
-          /((((((       ((((((.
-          /((((((       ((((((.
-          /((((((       ((((((.
-           ...(((///////(((...
-              (((((((((((((
-                 (((((((
-          /(((((((((((((((((((.
-           ......(((((((......
-                 (((((((
-                 (((((((""")
-input()
-print('...this asshole stole THE AMULET.')
-input()
-input('TAKE THE AMULET...')
-print("\033[A                             \033[A")
-print("This'll make a sweet offering in exchange for immortality...")
-input()
-
-
-os.system('cls' if os.name == 'nt' else 'clear')
-print("CONGRATULATIONS")
-print('You have...')
-
-input()
-
-print("""
-    ▄████  ▒█████   ███▄    █ ▓█████
-    ██▒ ▀█▒▒██▒  ██▒ ██ ▀█   █ ▓█   ▀
-    ▒██░▄▄▄░▒██░  ██▒▓██  ▀█ ██▒▒███
-    ░▓█  ██▓▒██   ██░▓██▒  ▐▌██▒▒▓█
-    ░▒▓███▀▒░ ████▓▒░▒██░   ▓██░░▒████▒
-    ░▒   ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░
-    ░   ░   ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░
-    ░ ░   ░ ░ ░ ░ ▒     ░   ░ ░    ░
-        ░     ░ ░           ░    ░  ░""")
-input()
-print("""
-    ██▀███   ▒█████    ▄████  █    ██ ▓█████
-    ▓██ ▒ ██▒▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀
-    ▓██ ░▄█ ▒▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███
-    ▒██▀▀█▄  ▒██   ██░░▓█  ██▓▓▓█  ░██░▒▓█  ▄
-    ░██▓ ▒██▒░ ████▓▒░░▒▓███▀▒▒▒█████▓ ░▒████▒
-    ░ ▒▓ ░▒▓░░ ▒░▒░▒░  ░▒   ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░
-    ░▒ ░ ▒░  ░ ▒ ▒░   ░   ░ ░░▒░ ░ ░  ░ ░  ░
-    ░░   ░ ░ ░ ░ ▒  ░ ░   ░  ░░░ ░ ░    ░
-    ░         ░ ░        ░    ░        ░  ░""")
-input()
-print('CLICK RUN to play again.')
+success()
