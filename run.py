@@ -134,7 +134,7 @@ def menu():
     Enemy (#) encounters are triggered by walking over them.
     Once you step into an encounter there's no going back,
     in the world of Gone Rogue, it's always a fight to the death.""")
-            input('     PRESS ENTER...')
+            input('     PRESS ENTER...\n')
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
 
@@ -351,8 +351,9 @@ def success():
 
     print('    ...this asshole stole THE AMULET.')
     input()
-    input('TAKE THE AMULET...')
+    input('TAKE THE AMULET...\n')
 
+    print("\033[A                             \033[A")
     print("\033[A                             \033[A")
     print("    This'll make a sweet offering in exchange for immortality...")
     input()
@@ -407,7 +408,7 @@ level.print_map(level_map.map, hero_map_att, enemy.position,
 
 play_level(CHECK_POS)
 
-input('PRESS ENTER to go deeper...')
+input('PRESS ENTER to go deeper...\n')
 
 
 # #################Level 2################# #
@@ -433,7 +434,7 @@ level.print_map(level_map.map, hero_map_att, enemy.position, loot.position,
 
 play_level(CHECK_POS)
 
-input('PRESS ENTER to go deeper...')
+input('PRESS ENTER to go deeper...\n')
 
 
 # #################Level 3################# #
