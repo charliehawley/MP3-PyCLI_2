@@ -39,7 +39,7 @@ def menu():
         RETURNS: - introduction to the game and its historical context
             or   - instructions describing how to interact with the game
             or   - starts the game loop"""
-    
+
     # clears game screen
     os.system('cls' if os.name == 'nt' else 'clear')
     # prints title
@@ -51,7 +51,7 @@ def menu():
 
         # on user input 'i' prints introduction
         if menu_choice == 'i':
-            # print statements with values of ("\033[A \033[A") 
+            # print statements with values of ("\033[A \033[A")
             # remove the line above
             print("\033[A                                            \033[A")
             print("\033[A                                            \033[A")
@@ -135,7 +135,6 @@ def menu():
     Once you step into an encounter there's no going back,
     in the world of Gone Rogue, it's always a fight to the death.""")
             input('     PRESS ENTER...')
-            os.system('cls' if os.name == 'nt' else 'clear')
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
 
@@ -149,8 +148,15 @@ def menu():
             print(GONE_ROGUE_LOGO)
             print("Welcome to Gone Rogue")
             break
-        # else:
-        #     menu()
+        else:
+            print("Try 'i', 'h' or 's'")
+            input()
+
+            print("\033[A                                      \033[A")
+            print("\033[A                                      \033[A")
+            print("\033[A                                      \033[A")
+            print("\033[A                                      \033[A")
+            print("\033[A                                      \033[A")
 
 
 def battle():
