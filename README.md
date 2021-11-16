@@ -82,6 +82,31 @@ OUT OF SCOPE?
 - expand item pool
 
 
+
+
+## DEPLOYMENT
+
+- create account on heroku.com
+- verify account
+- create password
+- click create a new app
+- choose an app name and region
+- go to 'settings'
+- add buildpacks: 
+    - python
+    - node.js
+- go to 'deploy'
+- if you're using github, choose github as your deployment method
+- in the 'App connected to GitHub, search and select the app to deploy
+- in the 'Automatic Deploys' section, you can choose to set up automatic deployment of any updates to the main branch of your GitHub repository
+- you can then click the 'Deploy Branch' button and watch Heroku build your app in the terminal below
+- once Heroku has finished this process, it will provide you with a link to the deployed app
+
+
+
+
+
+
 acknowledgements:
 Thanks to game testers Sam McGoun and Tom Healey
 
