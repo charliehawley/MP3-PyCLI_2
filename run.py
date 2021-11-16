@@ -22,33 +22,60 @@ def menu():
     print(gone_rogue_logo)
     print("Welcome to Gone Rogue")
     while True:
-        menu_choice = input('\ni = intro, c = controls, s = start\n')
+        menu_choice = input('\ni = intro, h = how to play, s = start\n')
         if menu_choice == 'i':
-            print("\033[A                             \033[A")
-            print("\033[A                             \033[A")
-            print("\033[A                             \033[A\n")
+            print("\033[A                                             \033[A")
+            print("\033[A                                             \033[A")
+            print("\033[A                                             \033[A\n")
             print("""
-At the dawn of the 1980s, rudimentary programming made a small step
-into the world of procedural generation in gaming.
-Two men Michael Toy and Glenn Wichman
-    PRESS ENTER""")
+The year is 1980. Miami is burning, Post-Its just hit the shelves, 
+the MGM is on fire and somebody just shot John Lennon. 
+PRESS ENTER""")
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
-            print("They disappeared...\n    PRESS ENTER")
+            print("""
+The world is chaotic and unpredictable. 
+Will there be peace? Will there be justice? Will there be revolution?
+            """)
             input()
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
-            print("Years later, the world realised...\n    PRESS ENTER")
+            print("""
+Enter procedural generation, 
+a way of producing 'randomised' worlds from stable rules.""")
             input()
             print("\033[A                             \033[A")
+            print("""
+This is the world of Rogue, the original Roguelike game that bore an entire genre
+dedicated to those seeking to witness the illusion of control shattering before them.""")
+            input()
             print("\033[A                             \033[A")
-            print("...they'd GONE ROGUE'\n    PRESS ENTER")
+            print("""
+It gave them something they had never seen before. 
+The game had agency, a life of its own.""")
+            input()
+            print("\033[A                             \033[A")
+            print("""
+Now, 40 years later, entropy has flaunted its inescapable will 
+and laid waste to the already waning optimism of the mid 20th Century.""")
+            input()
+            print("\033[A                             \033[A")
+            print("\nThe only cure? Surrendering yourself to endless possibility.")
+            input()
+            print("\033[A                             \033[A")
+            print("\nSome can follow their instincts and get their hands dirty,")
+            input()
+            print("\033[A                             \033[A")
+            print("others fall behind trying to reason with the chaos.")
+            input()
+            print("\033[A                             \033[A")
+            print("\nHow will you fare in the bloody world of GONE ROGUE?")
             input()
             os.system('cls' if os.name == 'nt' else 'clear')
             print(gone_rogue_logo)
             print("Welcome to Gone Rogue")
-        elif menu_choice == 'c':
+        elif menu_choice == 'h':
             print("\033[A                             \033[A")
             print("\033[A                             \033[A")
             print("\033[A                                      \033[A")
@@ -163,6 +190,7 @@ def battle():
             sys.exit()
         elif enemy.h_p < 0:
             print(f'You defeated {enemy.name}!')
+            input()
         else:
             battle()
 

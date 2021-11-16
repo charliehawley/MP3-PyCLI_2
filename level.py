@@ -1,4 +1,9 @@
-"""
+"""Level Module: 
+This module handles the UI for Gone Rouge.
+
+The LevelMapGen class generates a list to be printed 
+as the level map in the CLI.
+
 
 """
 import os
@@ -22,7 +27,7 @@ def check_hero_pos(lst_lst, hero_next_pos):
 
 def largest_index_position(lst1, lst2, lst3, lst4):
     """
-    Takes indexes for all entities and returns an integer
+    Takes indexe positions for all entities and returns an integer
     representing the maximum map size for rendering the level
     """
     indexes = [max(lst1), max(lst2), max(lst3), max(lst4)]
@@ -42,11 +47,12 @@ class LevelMapGen:
     def print_map(self, lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos,
                   gone_rogue_logo):
         """
-        Prints level to terminal using self.map list
+        Prints level to terminal using a list generated with self.map
         """
         os.system('cls' if os.name == 'nt' else 'clear')
         print(gone_rogue_logo)
         print("Welcome to Gone Rogue\n")
+        # print level name
         lst_lst[enemy_pos[0]][enemy_pos[1]] = '#'
         lst_lst[loot_pos[0]][loot_pos[1]] = '?'
         lst_lst[stairs_pos[0]][stairs_pos[1]] = '/'
