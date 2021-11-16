@@ -16,8 +16,11 @@ import os
 class LevelMapGen:
     """
     Creates an instance of the level
-    and stores 'map' as list to be iterated through
-    and printed on screen
+
+        ARGS: integer representing maximum map size
+
+        RETURNS: list as 'map' to be iterated through
+                 and printed on screen
     """
     def __init__(self, num):
         self.map = [['-' for x in range(0, num + 1)]
@@ -26,8 +29,12 @@ class LevelMapGen:
 
 def largest_index_position(lst1, lst2, lst3, lst4):
     """
-    Takes index positions for all entities and returns an integer
-    representing the maximum map size for rendering the level
+    Defines max map size by taking the largest integer from a list of indexes
+
+        ARGS: randomly generated index positions (lists) for all entities
+
+        RETURNS: integer representing the maximum map size
+                 for generating the level map
     """
     indexes = [max(lst1), max(lst2), max(lst3), max(lst4)]
     return max(indexes)
@@ -36,18 +43,29 @@ def largest_index_position(lst1, lst2, lst3, lst4):
 def print_map(lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos,
               gone_rogue_logo):
     """
-    Prints level to terminal using a list generated with self.map
+    Prints level to terminal using a list generated with LevelMapGen.map
+
+        ARGS: lists - level map, (hero.h_p, hero.power, hero.icon,
+              hero.position), enemy.position, loot.position, stairs.position,
+              GONE_ROGUE_LOGO
+
+        RETURNS: updates level map list and prints level map
     """
+    # clears screen
     os.system('cls' if os.name == 'nt' else 'clear')
+    # prints title
     print(gone_rogue_logo)
     print("Welcome to Gone Rogue\n")
-    # print level name
+    # print(level_name)
+    # prints map list using iteration replacing empty spaces
+    # with entity sprites
     lst_lst[enemy_pos[0]][enemy_pos[1]] = '#'
     lst_lst[loot_pos[0]][loot_pos[1]] = '?'
     lst_lst[stairs_pos[0]][stairs_pos[1]] = '/'
     lst_lst[hero_lst[3][0]][hero_lst[3][1]] = hero_lst[2]
     for i in lst_lst:
         print('  '.join(i))
+    # prints hp, damage and level map index
     print(f'HP: {hero_lst[0]}   Dmg: {hero_lst[1]}')
     print('# = enemy, ? = loot, / = stairs')
 
@@ -55,7 +73,10 @@ def print_map(lst_lst, hero_lst, enemy_pos, loot_pos, stairs_pos,
 def check_hero_pos(lst_lst, hero_next_pos):
     """
     Checks for entity in position index requested by move_hero()
-    returns string to be used to trigger encounters
+
+        ARGS: level map list, requested positional index for hero sprite
+
+        RETURNS: string to be used to trigger encounters
     """
     print(hero_next_pos)
     if lst_lst[hero_next_pos[0]][hero_next_pos[1]] == '/':
@@ -70,7 +91,12 @@ def check_hero_pos(lst_lst, hero_next_pos):
 
 def move_hero(hero_lst, wasd, lst_lst, map_limit):
     """
-    Changes hero posiiton index based on user input
+    Changes hero position index based on user input
+
+        ARGS: list - (hero.h_p, hero.power, hero.icon, hero.position),
+              string - direction, level_map.map
+
+        RETURNS: string - result of check_hero_pos, updated hero.position
     """
     if wasd == 'w':
         if (hero_lst[3][0] - 1) < 0:
