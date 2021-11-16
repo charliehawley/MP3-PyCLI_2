@@ -255,18 +255,18 @@ def play_level(state):
                 hero_map_att[1] *= loot.power
                 hero.h_p += loot.h_p
                 hero_map_att[0] += loot.h_p
-                print('''You feel way juiced, man! 
+                print('''You feel way juiced, man!
 So juiced it hurts.''')
-                print('''Your bloodied fists twitch, 
+                print('''Your bloodied fists twitch,
 itching to get to work.''')
                 input()
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
-                print("\033[A                                                    \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
+                print("\033[A                                          \033[A")
             else:
                 level_map.map[hero_index[0]][hero_index[1]] = hero.icon
                 hero.power += loot.power
