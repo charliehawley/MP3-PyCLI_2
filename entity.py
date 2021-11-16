@@ -62,35 +62,30 @@ def ents_init(enemy_ent, loot_ent):
         RETURNS: enemy object, loot object, stairs object
     """
     enemy_position = [(randint(0, 6)), (randint(0, 6))]
+    loot_position = [(randint(0, 6)), (randint(0, 6))]
+    stairs_position = [(randint(0, 6)), (randint(0, 6))]
 
     a = hero_position
     b = enemy_position
+    c = loot_position
+    d = stairs_position
 
     # resets enemy_position if it matches hero_position
     while a == b:
         enemy_position = [(randint(0, 6)), (randint(0, 6))]
-
     # initialises enemy
     enemy_ent = Ent(enemy_ent[0], enemy_ent[1], enemy_ent[2], enemy_position)
-
-    loot_position = [(randint(0, 6)), (randint(0, 6))]
-    c = loot_position
 
     # resets loot position if it matches either hero_position or enemy_position
     while c in (a, b):
         loot_position = [(randint(0, 6)), (randint(0, 6))]
-
     # initialises loot
     loot_ent = Ent(loot_ent[0], loot_ent[1], loot_ent[2], loot_position)
-
-    stairs_position = [(randint(0, 6)), (randint(0, 6))]
-    d = stairs_position
 
     # resets stairs position if it matches either hero_position, enemy_position
     # or loot_position
     while d in (a, b, c):
         stairs_position = [(randint(0, 6)), (randint(0, 6))]
-
     # initialises stairs
     stairs_ent = Ent('stairs', 0, 0, stairs_position)
 
