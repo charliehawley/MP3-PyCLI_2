@@ -10,6 +10,7 @@ from random import randint
 
 hero_position = [(randint(0, 6)), (randint(0, 6))]
 
+
 class Ent:
     """
     Creates an instance of entity

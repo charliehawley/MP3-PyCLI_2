@@ -206,9 +206,6 @@ def battle():
             input()
             print('CLICK RUN to play again.')
             sys.exit()
-        elif enemy.h_p < 0:
-            print(f'You defeated {enemy.name}!')
-            input()
         else:
             battle()
 

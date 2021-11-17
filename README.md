@@ -21,6 +21,9 @@ Gone Rogue follows this standard. Many elements in the game rely on random numbe
 generation to apply attributes to entities you encounter in-game and even define the  
 parameters of the world in which the game takes place.  
 
+## CONTENTS
+[]
+
 
 
 1 enemy  
@@ -74,11 +77,12 @@ TO DOs:
 	- testing showed that game is well balanced currently at 15hp, 10hp probs too hard
 - Enemy moves: (to move enemy closer to hero (needs to account for negative values))
 
-    `if (enemy[x]  -hero[x]) > (enemy[y] - hero[y]):`
-	    `enemy[x] += 1`
-
-    `else:`
-	    `enemy[y] += 1`
+    ```
+    if (enemy[x]  -hero[x]) > (enemy[y] - hero[y]):
+	    enemy[x] += 1
+    else:
+	    enemy[y] += 1
+    ```
 
 - easter egg indexes
 - expand item pool
