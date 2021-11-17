@@ -28,11 +28,33 @@ parameters of the world in which the game takes place.
     * [STRATEGY](#STRATEGY)
     * [SCOPE](#SCOPE)
     * [STRUCTURE](#STRUCTURE)
+    * [SKELETON](#SKELETON)
+        * [MENU](#MENU)
+        * [INTRODUCTION](#INTRODUCTION)
+        * [HOW TO PLAY](#HOW-TO-PLAY)
+        * [ENTITY CLASS LOGIC](#ENTITY-CLASS-LOGIC)
+        * [INPUT HERO NAME](#INPUT-HERO-NAME)
+        * [LEVEL MAP GENERATION](#LEVEL-MAP-GENERATION)
+        * [GAME LOOP](#GAME-LOOP)
+        * [LOOT](#LOOT)
+        * [BATTLE](#BATTLE)
+        * [BATTLE LOSS](#BATTLE-LOSS)
+        * [GAME OVER STATE](#GAME-OVER-STATE)
+        * [STAIRS](#STAIRS)
+        * [OOB](#OOB)
+        * [DATA VALIDATION](#DATA-VALIDATION)
+        * [SUCCESS](#SUCCESS)
+        * [MAIN SCRIPT LOGIC](#MAIN-SCRIPT-LOGIC)
+        * [EXTRA DESIGN DECISIONS](#EXTRA-DESIGN-DECISIONS)
+    * [SURFACE](#SURFACE)
 * [FUTURE FEATURES](#FUTURE-FEATURES)
+* [TESTING](#TESTING)
 * [KNOWN BUGS](#KNOWN-BUGS)
 * [FIXED BUGS](#FIXED-BUGS)
+* [TECHNOLOGIES USED](#TECHNOLOGIES-USED)
 * [DEPLOYMENT](#DEPLOYMENT)
 * [ACKNOWLEDGEMENTS](#ACKNOWLEDGEMENTS)
+* [CREDITS](#CREDITS)
 
 ## UX  
 
@@ -69,7 +91,7 @@ If the user's hp goes below 0 during a battle, a 'game over' state is triggered.
 Both outcomes are accompanied by an instruction to click 'run' if they wish to play again.
 
 ### SKELETON
-#### Menu
+#### MENU
 ![Menu image](logic-and-screenshots/screenshots/0001-menu.png)  
 The title page appears first and presents the main menu.  
 
@@ -144,7 +166,7 @@ Once the game loop is broken, Level 2 is declared.
 #### OOB
 ![Out Of Bounds image](logic-and-screenshots/screenshots/0341-oob.png)  
 
-Should the user try to flee the boundaries of the map, the game reminds them of the consequences.  
+Should the user try to flee the boundaries of the map, the game reminds them of the consequences with an Out Of Bounds notification.  
 
 #### DATA VALIDATION
 ![Data validation image](logic-and-screenshots/screenshots/0321-fight.png)  
@@ -195,6 +217,20 @@ Note:
 - Expand item/enemy pool.
 - Background image.
 
+### TESTING
+In order to appropriately test the application, three approaches were needed:
+* I implemented an immediate approach, using print statements to check the data being used to run the game and running the script myself after most significant changes.
+* I also took great care to observe Pylint's syntax highlighting and adjusted my code according to recommendations given from the prompts.
+* When the game was functioning as I wanted it to, I used the PEP8 online validator to be sure of any lingering inaccuracies.  
+
+In it's current state, the code raises no errors from the PEP8 online validator output although Pylint took exception to the lack of public functions in the entity class.  
+
+Proof of validation below.
+ 
+![Run.py validation screenshot](logic-and-screenshots/screenshots/run.py-pep8.png)
+![Entity.py validation screenshot](logic-and-screenshots/screenshots/entity.py-pep8.png)
+![Level.py validation screenshot](logic-and-screenshots/screenshots/level.py-pep8.png)
+
 ## KNOWN BUGS
 
 - spawn on ents on level 3
@@ -207,37 +243,52 @@ Note:
 - menu glitch
 - loot after spawn
 
-## DEPLOYMENT
+## TECHNOLOGIES USED
 
-- create account on heroku.com
-- verify account
-- create password
-- click create a new app
-- choose an app name and region
-- go to 'settings'
-- add buildpacks: 
+- Python 3.8.12
+- Git version control in the Gitpod environment
+- GitHub to store the repository
+- Heroku app to deploy the project to a web-hosted CLI
+- Code Institute's Heroku deployment [template](https://github.com/Code-Institute-Org/python-essentials-template)
+
+## DEPLOYMENT
+To deploy this app on Heroku I used the following steps:
+
+- Create account on heroku.com.
+- Verify account through email link.
+- The link takes you to a create password page where you should create a password.
+- From your dashboard click 'create a new app'.
+- Choose an app name and region.
+- Go to 'settings'.
+- Add buildpacks: 
     - python
     - node.js
-- go to 'deploy'
-- if you're using github, choose github as your deployment method
-- in the 'App connected to GitHub, search and select the app to deploy
-- in the 'Automatic Deploys' section, you can choose to set up automatic deployment of any updates to the main branch of your GitHub repository
-- you can then click the 'Deploy Branch' button and watch Heroku build your app in the terminal below
-- once Heroku has finished this process, it will provide you with a link to the deployed app
-
-
-
-
-
+- Go to the 'deploy' tab.
+- If you're using github, choose github as your deployment method.
+- In the 'App connected to GitHub' section, search and select the app to deploy.
+- In the 'Automatic Deploys' section, you can choose to set up automatic deployment of any updates to the main branch of your GitHub repository.
+- You can then click the 'Deploy Branch' button and watch Heroku build your app in the terminal below.
+- Once Heroku has finished this process, it will provide you with a link to the deployed app.
 
 ## ACKNOWLEDGEMENTS:
+Thanks to Liv
 Thanks to game testers Sam McGoun and Tom Healey
 
-I read Matt B's Calico Jack src code for inspiration on this project:
-os.system('cls' if os.name == 'nt' else 'clear')
+Thanks to Brian Macharia for your support and advice whilst navigating this Python project and my previous projects. 
 
+I read Matt B's Calico Jack src code and found the clear terminal command there:
+os.system('cls' if os.name == 'nt' else 'clear')
+but also really loved the dialogue which is what steered me towards the *Gone Rogue* concept.
+
+## CREDITS
 clear last line:
 https://stackoverflow.com/questions/44565704/how-to-clear-only-last-one-line-in-python-output-console
 
-titles generated at:
+Titles generated at:
 https://patorjk.com/software/taag/#p=testall&h=0&v=3&f=Bloody&t=gone%20rogue
+also visit https://Patorjk.com for some really fun projects.
+
+Amulet art generated at:
+https://manytools.org/hacker-tools/convert-images-to-ascii-art/
+
+Stack Overflow was used in abundance at small junctures to complete this project. There were many small queries that were solved almost instantly by consulting the best reviewed results.
