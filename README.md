@@ -7,8 +7,21 @@
 ### It gave gamers something they had never seen before. A game with agency and a life of its own.  
 ### Now, 40 years later, entropy has flaunted its inescapable will and laid waste to the optimism of the 20th Century.  
 ### The only cure? Surrendering yourself to endless possibility.  
-### How will you fare in the bloody world of GONE ROGUE?
+### How will you fare in the bloody world of GONE ROGUE?  
 ___
+  
+[Play Gone Rogue here (deployed app)](https://gone-rogue.herokuapp.com/ "Ready to go rogue?")
+___
+
+Gone Rogue is a command line application game based on the original 1980 *Rogue* game.  
+The USP for Rogue and all games in the Roguelike/lite genre is procedural generation -  
+typically characterised by randomised elements in the game logic that produce unique   
+results each time the game is run.  
+Gone Rogue follows this standard. Many elements in the game rely on random number  
+generation to apply attributes to entities you encounter in-game and even define the  
+parameters of the world in which the game takes place.  
+
+
 
 1 enemy  
 1 prize  
