@@ -22,7 +22,11 @@ generation to apply attributes to entities you encounter in-game and even define
 parameters of the world in which the game takes place.  
 
 ## CONTENTS
-[]
+[FUTURE FEATURES](#FUTURE-FEATURES)
+[KNOWN BUGS](#KNOWN-BUGS)
+[FIXED BUGS](#FIXED-BUGS)
+[DEPLOYMENT](#DEPLOYMENT)
+[ACKNOWLEDGEMENTS](#ACKNOWLEDGEMENTS)
 
 
 
@@ -83,9 +87,9 @@ TO DOs:
     else:
 	    enemy[y] += 1
     ```
-
 - easter egg indexes
-- expand item pool
+- expand item/enemy pool
+- background
 
 ## KNOWN BUGS
 
@@ -120,7 +124,7 @@ TO DOs:
 
 
 
-acknowledgements:
+## ACKNOWLEDGEMENTS:
 Thanks to game testers Sam McGoun and Tom Healey
 
 I read Matt B's Calico Jack src code for inspiration on this project:
