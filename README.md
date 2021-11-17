@@ -165,34 +165,26 @@ Empty inputs will be used to prompt the next line of dialogue.
 Dialogue is indented throughout and any printed action text is left-aligned to distinguish between the two roles for this text-heavy game.  
 
 ### SURFACE
-The CLI is fairly restrictive on surface design but the CLI is the perfect substrate for this particular homage. The original *Rogue* was played in a command line environment and so the restrictions of CLI can be reframed as a feature in this app.
-
-
-
-TO DOs:
-- exit function, in case user wants to restart and doesn't know how
-- add amulet room? or hide stairs under boss? nope, stairs print last.
-- choose not to go down? choice y/n change check_pos to "walk"
-- level 2 exit sometimes creates input loop
-	- entities sometimes spawn under first position on last level 
-- remove stairs incentive
-- print level title above map
-- check dialogue format is standard throughout
-
+The CLI is fairly restrictive on surface design but the CLI is the perfect substrate for this particular homage. The original *Rogue* was played in a command line environment and so the restrictions of CLI can be reframed as a feature in this app.  
 
 ## FUTURE FEATURES
-
-- clear battle notifications after battle
-- hp stops at zero
-- Print enemy HP for level beneath map
-- music? sound effects?
-- Compass?  C: ^ > v < x		where x means sprite is within one move of an object
-- Q to fight
-- freeze state on entities, miss attack turn
-- Event listeners for movement
+There are so many potentials for a game that appears to have many limits.  
+As such, the list of future features is vast:
+- The game needs an exit function, in case the user wants to start from the beginning
+- The choice to not go downstairs? During play testing, there were many occasions when the players would miss a loot item or forget to fight the levels boss and accidentally leave the floor early.  
+- Which raises another issue, there is no preventative incentive to stop the user from skipping all enemies and taking all the loot!
+- Print level title above map. It would be nice to know which level you're on.
+- Clear battle notifications after battle - it's sometimes hard to choose your next move if you and your opponent were evenly matched and there is a screen of battle updates obscuring the map.
+- Hp should stop at zero.
+- Print enemy HP for level beneath map, so the user can prepare appropriately by taking the loot before entering a losing battle.
+- Compass?  C: ^ > v < x		where x means sprite is within one move of a hidden object.
+- F to fight and Q to flee.
+- A way to cause a freeze state for entities, causing them to miss an attack turn
+- Event listeners for movement: full/live WASD compatibility.
 - Difficulty: hard lowers hero hp 
-	- testing showed that game is well balanced currently at 15hp, 10hp probs too hard
-- Enemy moves: (to move enemy closer to hero (needs to account for negative values))
+	- testing showed that game is well balanced currently at 15hp so more testing needed to determine a fair 'hard' mode. Or just introduce 'impossible' mode.
+- Enemy moves (to move enemy closer to hero (needs to account for negative values)).
+Note:
 
     ```
     if (enemy[x]  -hero[x]) > (enemy[y] - hero[y]):
@@ -200,14 +192,15 @@ TO DOs:
     else:
 	    enemy[y] += 1
     ```
-- easter egg indexes
-- expand item/enemy pool
-- background
+- Expand item/enemy pool.
+- Background image.
 
 ## KNOWN BUGS
 
 - spawn on ents on level 3
 - level 2 sometimes creates an input loop on level exit (interaction with stairs)
+- level 2 exit sometimes creates input loop
+	- entities sometimes spawn under first position on last level 
 
 ## FIXED BUGS
 
