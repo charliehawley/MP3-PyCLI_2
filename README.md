@@ -6,7 +6,7 @@
 ### Enter procedural generation, a way of producing 'randomized' worlds from stable rules.  
 ### This is the world of Rogue, the original Roguelike game that bore an entire genre. 
 ### It gave gamers something they had never seen before. A game with agency and a life of its own.  
-### Now, 40 years later, entropy has flaunted its inescapable will and laid waste to the optimism of the 20th Century.  
+### Now, 40 years later, entropy has flaunted its inescapable will and laid waste to the already waning optimism of the mid 20th Century.  
 ### The only cure? Surrendering yourself to endless possibility.  
 ### How will you fare in the bloody world of GONE ROGUE?  
 ___
